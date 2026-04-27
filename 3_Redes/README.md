@@ -27,6 +27,12 @@ A diferencia de una red doméstica, aquí aplicamos **seguridad perimetral** med
 ### 3. Diseño Jerárquico
 Uso del modelo de **dos capas (Core y Acceso)** para reducir los dominios de colisión y facilitar el mantenimiento de la electrónica de red (Cisco 2911 y 2960).
 
+### 4. Conectividad VPN
+He configurado túneles VPN para permitir el acceso remoto seguro a la red corporativa. Esto permite que los trabajadores se conecten desde fuera de la oficina manteniendo la seguridad y el cifrado de los datos.
+
+### 5. Segmentación por VLANs
+He implementado VLANs para separar el tráfico de los distintos departamentos (Administración, Ventas, Sistemas). Esto mejora la seguridad interna y asegura que los fallos en una red local no afecten al resto de la empresa.
+
 ---
 
 ## 📂 Contenido del Repositorio
