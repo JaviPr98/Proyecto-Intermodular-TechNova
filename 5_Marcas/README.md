@@ -68,4 +68,4 @@ Este módulo es el "Nivel 0" que alimenta al resto de mi proyecto de ASIR:
 
 ---
 
-> **Conclusión Profesional:** Como futuro Administrador de Sistemas, **considero que dominar la estructura de la información** mediante XML/XSD es vital para garantizar la consistencia de los datos, facilitando la automatización y la interoperabilidad en entornos empresariales complejos.
+> **Conclusión Profesional:** Como  Administrador de Sistemas, **considero que dominar la estructura de la información** mediante XML/XSD es vital para garantizar la consistencia de los datos, facilitando la automatización y la interoperabilidad en entornos empresariales complejos.
