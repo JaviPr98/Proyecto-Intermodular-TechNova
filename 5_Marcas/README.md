@@ -27,7 +27,7 @@ Este archivo actúa como el inventario central de la compañía:
 
 ### 2. Catálogo de Servicios Comerciales (`Servicios.xml`) 📑
 **He estructurado la oferta de consultoría** en 5 áreas clave: Infraestructura IT, Cloud, Ciberseguridad, Consultoría y Desarrollo.
-* **Parametrización:** Cada servicio incluye metadatos críticos como modalidad, duración estimada y **precios base** con precisión financiera.
+* **Parametrización:** Cada servicio incluye metadatos críticos como modalidad, duración estimada y precio base con precisión financiera.
 
 ---
 
@@ -66,6 +66,9 @@ Este módulo es el "Nivel 0" que alimenta al resto de mi proyecto de ASIR:
 | 📄 [**MEMORIA_MARCAS.pdf**](./MEMORIA_MARCAS.pdf) | Análisis técnico completo, modelos relacionales y evidencias de testing. |
 | 📁 [**HTML_TECHNOVA/**](./HTML_TECHNOVA/) | Subcarpeta con los archivos fuente reales: `.xml`, `.xsd`, `.html` y `.css`. |
 
+---
+
+> **Conclusión Profesional:** Como futuro Administrador de Sistemas, **considero que dominar la estructura de la
 ---
 
 > **Conclusión Profesional:** Como futuro Administrador de Sistemas, **considero que dominar la estructura de la información** mediante XML/XSD es vital para garantizar la consistencia de los datos, facilitando la automatización y la interoperabilidad en entornos empresariales complejos.
