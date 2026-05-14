@@ -1,0 +1,633 @@
+/* --- 1. CONFIGURACIÓN Y VARIABLES (:root) --- */
+:root {
+    --rojo-technova: #e11d48;
+    --negro-profundo: #333;
+    --blanco: #ffffff;
+    --gris-fondo: #f2f2f2;
+    --gris-borde: #aaa;
+    --texto-dim: #666;
+}
+
+/* --- 2. RESETEO DE ESTILOS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    background-color: var(--gris-fondo);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #000;
+}
+
+/* --- 3. NAVEGACIÓN  --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    background: var(--blanco);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #ddd;
+    height: 90px;                
+    min-height: 90px;
+    max-height: 90px;
+}
+
+.logo {
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.enlaces {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.enlaces a {
+    text-decoration: none;
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.enlaces a:hover {
+    color: var(--rojo-technova); 
+}
+
+/* --- 4. SECCIÓN HERO y INICIO --- */
+.hero {
+    height: 75vh;
+    color: var(--blanco);
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), 
+                url('../imagenes/mundo.jpg') center/cover no-repeat;
+}
+
+.hero h1 {
+    font-size: 6rem;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -4px;
+}
+
+.hero-subtext {
+    font-size: 2.2rem;
+    font-weight: 300;
+    margin-top: 20px;
+    opacity: 0.9;
+}
+
+.seccion-esencia {
+    padding: 140px 8%;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 120px;
+    background-color: var(--blanco);
+    align-items: start;
+}
+
+.tagline-rojo {
+    color: var(--rojo-technova);
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.esencia-col-izq h2 {
+    font-size: 4.8rem;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -4px;
+}
+
+.esencia-col-der p {
+    font-size: 1.45rem;
+    color: var(--texto-dim);
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+/* --- 5. SECCIÓN EQUIPO (CARDS) --- */
+.seccion-equipo { padding: 60px 8%; }
+
+.dept-titulo {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid var(--gris-borde);
+    padding-bottom: 10px;
+}
+
+.contenedor-equipo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.tarjeta {
+    width: 280px;
+    border: 1px solid #ddd;
+    background: var(--blanco);
+    transition: 0.4s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-10px); 
+    border-color: var(--rojo-technova);
+}
+
+.t-header {
+    height: 100px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.t-header::after { 
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 20px 20px;
+}
+
+.t-body { padding: 25px; }
+
+.tag {
+    color: var(--rojo-technova);
+    font-weight: 800;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* --- 6. INFRAESTRUCTURA (GRID) --- */
+.seccion-infra { padding: 80px 8%; }
+
+.item-it {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+    align-items: start;
+}
+
+.item-it.ancho-completo {
+    display: block; 
+}
+
+.item-it img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    background: var(--blanco);
+    border: 1px solid var(--gris-borde);
+}
+
+.tabla-it {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanco);
+}
+
+.tabla-it th {
+    padding: 15px;
+    background: #000;
+    color: var(--blanco);
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.tabla-it td {
+    padding: 15px;
+    border-bottom: 1px solid var(--gris-borde);
+    font-size: 0.9rem;
+}
+
+/* --- 7. FORMULARIO (DISEÑO OSCURO) --- */
+.form-container {
+    background-color: var(--negro-profundo);
+    color: var(--blanco);
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 80px;
+    border-radius: 10px;
+}
+
+.contact-layout {
+    display: flex;
+    gap: 100px;
+    align-items: center;
+}
+
+.contact-info h2 {
+    color: var(--rojo-technova);
+    font-size: 5rem;
+    line-height: 0.85;
+    letter-spacing: -4px;
+    margin-bottom: 80px;
+}
+
+form { flex: 1.3; }
+
+label {
+    display: block;
+    margin-top: 25px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #666;
+    color: #fff;
+    outline: none;
+}
+
+input:focus, textarea:focus { 
+    border-bottom: 2px solid var(--rojo-technova); 
+}
+
+option { color: #000; background: #fff; }
+
+.checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 35px 0;
+}
+
+.checkbox-field input { 
+    width: 18px; 
+    height: 18px; 
+    margin: 0; 
+}
+
+.checkbox-field label { 
+    margin: 0; 
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+    margin-top: 45px;
+}
+
+button[type="submit"] {
+    background-color: var(--rojo-technova);
+    color: #fff;
+    padding: 18px 45px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 800;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+button[type="reset"] {
+    background: none;
+    border: none;
+    color: var(--rojo-technova);
+    text-decoration: underline;
+    font-weight: 800;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* --- 8. FOOTER --- */
+footer {
+    padding: 60px 8%;
+    text-align: center;
+    font-size: 0.8rem;
+    border-top: 1px solid var(--gris-borde);
+    background: var(--blanco);
+}
+
+/* --- 9. IMÁGENES POR GRUPO --- */
+.h1 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../imagenes/1.jpg'); }
+.h2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../imagenes/2.jpg'); }
+.h3 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../imagenes/3.jpg'); }
+.h4 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../imagenes/4.jpg'); }
+.h5 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../imagenes/5.jpg'); }
+.h6 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../imagenes/6.jpg'); }
+
+/* --- 10. PÁGINA DE SERVICIOS --- */
+.servicios-hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+    color: white;
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.servicios-hero-content h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.servicios-hero-content p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.servicios-main {
+    padding: 80px 8%;
+    background: var(--gris-fondo);
+}
+
+.categoria-servicios {
+    margin-bottom: 80px;
+}
+
+.categoria-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--rojo-technova);
+}
+
+.categoria-numero {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--rojo-technova);
+    line-height: 1;
+}
+
+.categoria-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.servicio-card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--rojo-technova);
+}
+
+.servicio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.servicio-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.servicio-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.servicio-card p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.servicio-detalles {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.detalle-item {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.detalle-item strong {
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.cta-servicios {
+    background: var(--gris-fondo);
+    padding: 60px;
+    border-radius: 12px;
+    text-align: left;
+    margin-top: 80px;
+    border-left: 4px solid var(--rojo-technova);
+}
+
+.cta-servicios h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}
+
+.cta-servicios p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.cta-servicios a {
+    color: var(--rojo-technova);
+    text-decoration: underline;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.cta-servicios a:hover {
+    color: #c91840;
+}
+
+/* --- 11. PÁGINA DE DOCUMENTACIÓN --- */
+.docs-hero-simple {
+    background: var(--blanco);
+    padding: 80px 8%;
+    border-bottom: 3px solid var(--rojo-technova);
+}
+
+.docs-hero-simple h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    letter-spacing: -2px;
+}
+
+.docs-hero-simple p {
+    font-size: 1.1rem;
+    max-width: 900px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.docs-content {
+    padding: 60px 8%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.docs-section {
+    margin-bottom: 60px;
+}
+
+.docs-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--rojo-technova);
+}
+
+.docs-section > p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.stats-list {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.stats-list li {
+    background: var(--gris-fondo);
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.file-item {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--rojo-technova);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.file-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.xml-badge {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.xsd-badge {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.test-badge {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.file-item h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.file-item p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.file-item strong {
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.file-item a {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--rojo-technova);
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.file-item a:hover {
+    color: #c91840;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .servicios-hero-content h1,
+    .docs-hero-simple h1 {
+        font-size: 2.5rem;
+    }
+    
+    .servicios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-servicios {
+        padding: 40px 30px;
+    }
+}
+
+

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    XML de Gestión de Inventario IT - TechNova Solutions S.L.
+    
+    Descripción: Este documento XML representa el inventario completo de recursos
+    tecnológicos y humanos de TechNova Solutions, incluyendo:
+    - Empleados con equipamiento asignado
+    - Infraestructura de red y servidores
+    - Sistemas de conectividad y telefonía
+    
+    Autor: Javier Ordóñez Muñoz
+    Módulo: Lenguajes de Marcas y Sistemas de Gestión de Información 
+    Proyecto Intermodular - 1º ASIR
+    Fecha de creación: 2026-04-23
+    Última actualización: 2026-04-23
+    
+    Validación: Este XML está validado contra el esquema Gestion.xsd
+-->
+<ConsultoriaTecnica 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="Gestion.xsd"
+    nombre="TechNova Solutions S.L.">
+
+    <!-- ========================================
+         SECCIÓN 1: USUARIOS Y EMPLEADOS
+         Inventario de personal con equipamiento asignado
+         ======================================== -->
+    <Usuarios>
+        
+        <!-- Empleado 1: Administrador Senior de Infraestructura -->
+        <Empleado id="EMP001">
+            <Nombre>Jaime Sistema</Nombre>
+            <Departamento>Sistemas</Departamento>
+            <Cargo>Senior Infrastructure Admin</Cargo>
+            <EquipamientoAsignado>
+                <Dispositivo tipo="Laptop Workstation">
+                    <Marca>Lenovo ThinkPad P16 G2</Marca>
+                    <Componentes>
+                        <CPU>Intel i9-13980HX</CPU>
+                        <RAM unidad="GB">64</RAM>
+                        <Almacenamiento unidad="TB">2 NVMe Gen4</Almacenamiento>
+                        <GPU>NVIDIA RTX A2000 8GB</GPU>
+                    </Componentes>
+                    <Precio moneda="EUR">3450.00</Precio>
+                </Dispositivo>
+            </EquipamientoAsignado>
+            <Telefonia>
+                <Terminal>iPhone 15 Pro 256GB</Terminal>
+                <Precio moneda="EUR">1219.00</Precio>
+            </Telefonia>
+            <Perifericos>
+                <Monitor>2x Dell UltraSharp 27" 4K</Monitor>
+                <Teclado>Logitech MX Keys S</Teclado>
+                <Raton>Logitech MX Master 3S</Raton>
+                <Auriculares>Jabra Evolve2 65</Auriculares>
+            </Perifericos>
+        </Empleado>
+
+        <!-- Empleado 2: Ingeniero de Redes -->
+        <Empleado id="EMP002">
+            <Nombre>Alex Redes</Nombre>
+            <Departamento>Sistemas</Departamento>
+            <Cargo>Network Engineer</Cargo>
+            <EquipamientoAsignado>
+                <Dispositivo tipo="Laptop">
+                    <Marca>Dell Latitude 5440</Marca>
+                    <Componentes>
+                        <CPU>Intel i7-1355U</CPU>
+                        <RAM unidad="GB">32</RAM>
+                        <Almacenamiento unidad="GB">512 SSD</Almacenamiento>
+                    </Componentes>
+                    <Precio moneda="EUR">1550.00</Precio>
+                </Dispositivo>
+            </EquipamientoAsignado>
+            <Perifericos>
+                <Monitor>HP P24h G5</Monitor>
+                <Otros>Consola de serie USB-C a RJ45</Otros>
+            </Perifericos>
+        </Empleado>
+
+        <!-- Empleado 3: Líder de Desarrollo Full Stack -->
+        <Empleado id="EMP003">
+            <Nombre>Lucía Stack</Nombre>
+            <Departamento>Desarrollo</Departamento>
+            <Cargo>Full Stack Lead</Cargo>
+            <EquipamientoAsignado>
+                <Dispositivo tipo="Portátil">
+                    <Marca>MacBook Pro 14" M3 Pro</Marca>
+                    <Componentes>
+                        <CPU>Apple M3 Pro (12 núcleos)</CPU>
+                        <RAM unidad="GB">36</RAM>
+                        <Almacenamiento unidad="GB">512 SSD</Almacenamiento>
+                    </Componentes>
+                    <Precio moneda="EUR">2999.00</Precio>
+                </Dispositivo>
+            </EquipamientoAsignado>
+            <Perifericos>
+                <Monitor>LG UltraFine 5K 27"</Monitor>
+            </Perifericos>
+        </Empleado>
+
+        <!-- Empleado 4: Analista Senior de Datos -->
+        <Empleado id="EMP006">
+            <Nombre>Hugo Data</Nombre>
+            <Departamento>Data</Departamento>
+            <Cargo>Senior Data Analyst</Cargo>
+            <EquipamientoAsignado>
+                <Dispositivo tipo="Laptop">
+                    <Marca>HP ZBook Studio G10</Marca>
+                    <Componentes>
+                        <CPU>Intel i9-13900H</CPU>
+                        <RAM unidad="GB">64</RAM>
+                        <Almacenamiento unidad="TB">1</Almacenamiento>
+                    </Componentes>
+                    <Precio moneda="EUR">3100.00</Precio>
+                </Dispositivo>
+            </EquipamientoAsignado>
+        </Empleado>
+
+        <!-- Empleado 5: Científico de Datos -->
+        <Empleado id="EMP009">
+            <Nombre>Pau Neural</Nombre>
+            <Departamento>Data</Departamento>
+            <Cargo>Data Scientist</Cargo>
+            <EquipamientoAsignado>
+                <Dispositivo tipo="Desktop Workstation">
+                    <Marca>HP Z8 G5 Tower</Marca>
+                    <Componentes>
+                        <CPU>Intel Xeon W5-2455X</CPU>
+                        <RAM unidad="GB">128</RAM>
+                        <Almacenamiento unidad="TB">4 (RAID 1)</Almacenamiento>
+                        <GPU>NVIDIA RTX 6000 Ada Generation 48GB</GPU>
+                    </Componentes>
+                    <Precio moneda="EUR">9200.00</Precio>
+                </Dispositivo>
+            </EquipamientoAsignado>
+            <Perifericos>
+                <Monitor>2x ASUS ProArt 32" 4K</Monitor>
+            </Perifericos>
+        </Empleado>
+
+        <!-- Empleado 6: Gerente de Recursos Humanos -->
+        <Empleado id="EMP010">
+            <Nombre>Sara Talento</Nombre>
+            <Departamento>RRHH</Departamento>
+            <Cargo>HR Manager</Cargo>
+            <EquipamientoAsignado>
+                <Dispositivo tipo="Laptop">
+                    <Marca>Microsoft Surface Laptop 5</Marca>
+                    <Componentes>
+                        <CPU>Intel i5</CPU>
+                        <RAM unidad="GB">16</RAM>
+                        <Almacenamiento unidad="GB">256</Almacenamiento>
+                    </Componentes>
+                    <Precio moneda="EUR">1250.00</Precio>
+                </Dispositivo>
+            </EquipamientoAsignado>
+        </Empleado>
+
+        <!-- Empleado 7: Director Ejecutivo -->
+        <Empleado id="EMP012">
+            <Nombre>Luis CEO</Nombre>
+            <Departamento>Direccion</Departamento>
+            <Cargo>Chief Executive Officer</Cargo>
+            <EquipamientoAsignado>
+                <Dispositivo tipo="Ultra-Portátil">
+                    <Marca>MacBook Air 15" M3</Marca>
+                    <Componentes>
+                        <CPU>M3</CPU>
+                        <RAM unidad="GB">24</RAM>
+                        <Almacenamiento unidad="TB">1</Almacenamiento>
+                    </Componentes>
+                    <Precio moneda="EUR">2200.00</Precio>
+                </Dispositivo>
+            </EquipamientoAsignado>
+            <Telefonia>
+                <Terminal>iPhone 15 Pro Max</Terminal>
+                <Precio moneda="EUR">1469.00</Precio>
+            </Telefonia>
+        </Empleado>
+
+        <!-- Empleado 8: Gerente de Cuentas Clave -->
+        <Empleado id="EMP014">
+            <Nombre>Marta Ventas</Nombre>
+            <Departamento>Comercial</Departamento>
+            <Cargo>Key Account Manager</Cargo>
+            <EquipamientoAsignado>
+                <Dispositivo tipo="Laptop">
+                    <Marca>Dell Latitude 7440</Marca>
+                    <Componentes>
+                        <CPU>i5</CPU>
+                        <RAM unidad="GB">16</RAM>
+                        <Almacenamiento unidad="GB">512</Almacenamiento>
+                    </Componentes>
+                    <Precio moneda="EUR">1100.00</Precio>
+                </Dispositivo>
+            </EquipamientoAsignado>
+            <Telefonia>
+                <Terminal>Samsung Galaxy A54</Terminal>
+                <Precio moneda="EUR">350.00</Precio>
+            </Telefonia>
+        </Empleado>
+
+    </Usuarios>
+
+    <!-- ========================================
+         SECCIÓN 2: INFRAESTRUCTURA IT
+         Inventario de servidores, networking y conectividad
+         ======================================== -->
+    <Infraestructura>
+        
+        <!-- Armario Rack Principal -->
+        <ArmariosRack cantidad="1">
+            <Modelo>APC NetShelter SX 42U 600mm x 1070mm</Modelo>
+            <Ubicacion>Sala CPD - Sótano 1</Ubicacion>
+            <Contenido>
+                
+                <!-- Equipamiento de Red -->
+                <Networking>
+                    <!-- Switch Core Principal -->
+                    <Switch id="SW-CORE-01">
+                        <Marca>Cisco Catalyst 9300 48-port PoE+</Marca>
+                        <Puertos>48 Puertos GigE + 4x10G Uplink</Puertos>
+                        <Velocidad>Backplane 480 Gbps</Velocidad>
+                        <Precio moneda="EUR">5400.00</Precio>
+                    </Switch>
+                    
+                    <!-- Router Edge con Firewall -->
+                    <Router id="RT-EDGE-01">
+                        <Marca>Juniper SRX300 Services Gateway</Marca>
+                        <Funciones>Firewall, NAT, VPN IPsec, Enrutamiento BGP</Funciones>
+                        <Precio moneda="EUR">1200.00</Precio>
+                    </Router>
+                    
+                    <!-- Sistema de Alimentación Ininterrumpida -->
+                    <SistemaSAI>
+                        <Marca>APC Smart-UPS 3000VA Rackmount</Marca>
+                        <Precio moneda="EUR">1800.00</Precio>
+                    </SistemaSAI>
+                </Networking>
+                
+                <!-- Servidores Físicos -->
+                <ServidoresFisicos>
+                    <!-- Servidor de Producción - Virtualización -->
+                    <Servidor id="SRV-PROD-01">
+                        <Rol>Host Virtualización (VMware ESXi / Proxmox)</Rol>
+                        <Componentes>
+                            <CPU>2x Intel Xeon Silver 4410Y (24 Cores total)</CPU>
+                            <RAM unidad="GB">256 DDR5 ECC</RAM>
+                            <Almacenamiento unidad="TB">8 (4x2TB NVMe Hot-Swap)</Almacenamiento>
+                        </Componentes>
+                        <Precio moneda="EUR">11500.00</Precio>
+                    </Servidor>
+                    
+                    <!-- Servidor de Backup y Almacenamiento -->
+                    <Servidor id="SRV-BACKUP-01">
+                        <Rol>Almacenamiento Masivo y Backup</Rol>
+                        <Componentes>
+                            <CPU>Intel Xeon E-2314</CPU>
+                            <RAM unidad="GB">32</RAM>
+                            <Almacenamiento unidad="TB">40 (RAID 6)</Almacenamiento>
+                        </Componentes>
+                        <Precio moneda="EUR">6500.00</Precio>
+                    </Servidor>
+                </ServidoresFisicos>
+                
+            </Contenido>
+        </ArmariosRack>
+        
+        <!-- Sistemas de Conectividad -->
+        <Conectividad>
+            <!-- Cableado Estructurado -->
+            <CableadoInstalacion>
+                <Tipo>Bobina 500m Cat.6a U/FTP LSZH (Libre Halógenos)</Tipo>
+                <Cantidad>4</Cantidad>
+                <PrecioTotal moneda="EUR">1600.00</PrecioTotal>
+            </CableadoInstalacion>
+            
+            <!-- Puntos de Acceso WiFi -->
+            <PuntosAcceso cantidad="6">
+                <Modelo>Ubiquiti UniFi 6 Pro (WiFi 6)</Modelo>
+                <PrecioUnidad moneda="EUR">185.00</PrecioUnidad>
+            </PuntosAcceso>
+            
+            <!-- Sistema de Telefonía IP -->
+            <TelefoníaIP>
+                <Centralita>Cloud PBX Asterisk</Centralita>
+                <TerminalesFisicos cantidad="5">Yealink T54W</TerminalesFisicos>
+                <PrecioTotal moneda="EUR">950.00</PrecioTotal>
+            </TelefoníaIP>
+        </Conectividad>
+        
+    </Infraestructura>
+
+</ConsultoriaTecnica>

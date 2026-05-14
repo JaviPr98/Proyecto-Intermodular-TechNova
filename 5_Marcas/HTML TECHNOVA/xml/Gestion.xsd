@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    XSD Schema para TechNova Solutions S.L.
+    Sistema de Gestión de Inventario IT y Recursos Humanos
+    
+    Autor: Javier Ordóñez Muñoz
+    Módulo: Lenguajes de Marcas y Sistemas de Gestión de Información (0373)
+    Fecha: 2026
+    
+    Este esquema valida:
+    - Estructura jerárquica de empleados e infraestructura
+    - Tipos de datos específicos (precios, componentes hardware)
+    - Patrones de identificadores únicos
+    - Restricciones de valores (rangos, enumeraciones)
+    - Cardinalidades (elementos opcionales/obligatorios)
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- ========================================
+         TIPOS SIMPLES CON RESTRICCIONES
+         ======================================== -->
+    
+    <!-- Patrón para IDs de empleados: EMP seguido de 3 dígitos -->
+    <xs:simpleType name="tipoIDEmpleado">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="EMP\d{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Patrón para IDs de servidores: SRV-TEXTO-NN -->
+    <xs:simpleType name="tipoIDServidor">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="SRV-[A-Z]+-\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Patrón para IDs de dispositivos de red: XX-TEXTO-NN -->
+    <xs:simpleType name="tipoIDDispositivo">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{2}-[A-Z]+-\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Enumeración de departamentos válidos -->
+    <xs:simpleType name="tipoDepartamento">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Sistemas"/>
+            <xs:enumeration value="Desarrollo"/>
+            <xs:enumeration value="Data"/>
+            <xs:enumeration value="RRHH"/>
+            <xs:enumeration value="Direccion"/>
+            <xs:enumeration value="Comercial"/>
+            <xs:enumeration value="Seguridad"/>
+            <xs:enumeration value="Cloud"/>
+            <xs:enumeration value="Diseño"/>
+            <xs:enumeration value="Admin"/>
+            <xs:enumeration value="Legal"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Enumeración de monedas válidas -->
+    <xs:simpleType name="tipoMoneda">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="USD"/>
+            <xs:enumeration value="GBP"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Precio con restricciones: positivo, máximo 2 decimales -->
+    <xs:simpleType name="tipoValorPrecio">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="999999.99"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Nombre de persona: 3-100 caracteres -->
+    <xs:simpleType name="tipoNombrePersona">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3"/>
+            <xs:maxLength value="100"/>
+            <xs:pattern value="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Cantidad entera positiva -->
+    <xs:simpleType name="tipoCantidad">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="9999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ========================================
+         TIPOS COMPLEJOS
+         ======================================== -->
+    
+    <!-- Tipo para precios con moneda -->
+    <xs:complexType name="tipoPrecio">
+        <xs:simpleContent>
+            <xs:extension base="tipoValorPrecio">
+                <xs:attribute name="moneda" type="tipoMoneda" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- Tipo para componentes hardware con unidad -->
+    <xs:complexType name="tipoHardwareComponente">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="unidad" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- ========================================
+         ELEMENTO RAÍZ: ConsultoriaTecnica
+         ======================================== -->
+    
+    <xs:element name="ConsultoriaTecnica">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <!-- SECCIÓN: USUARIOS/EMPLEADOS -->
+                <xs:element name="Usuarios">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Empleado" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Nombre" type="tipoNombrePersona"/>
+                                        <xs:element name="Departamento" type="tipoDepartamento"/>
+                                        <xs:element name="Cargo">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="3"/>
+                                                    <xs:maxLength value="100"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        
+                                        <!-- Equipamiento asignado (obligatorio) -->
+                                        <xs:element name="EquipamientoAsignado">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Dispositivo">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="Marca">
+                                                                    <xs:simpleType>
+                                                                        <xs:restriction base="xs:string">
+                                                                            <xs:minLength value="2"/>
+                                                                            <xs:maxLength value="100"/>
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
+                                                                </xs:element>
+                                                                <xs:element name="Componentes">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="CPU" type="xs:string"/>
+                                                                            <xs:element name="RAM" type="tipoHardwareComponente"/>
+                                                                            <xs:element name="Almacenamiento" type="tipoHardwareComponente"/>
+                                                                            <xs:element name="GPU" type="xs:string" minOccurs="0"/>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="Precio" type="tipoPrecio"/>
+                                                            </xs:sequence>
+                                                            <xs:attribute name="tipo" type="xs:string" use="required"/>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        
+                                        <!-- Telefonía (opcional) -->
+                                        <xs:element name="Telefonia" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Terminal" type="xs:string"/>
+                                                    <xs:element name="Precio" type="tipoPrecio"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        
+                                        <!-- Periféricos (opcional) -->
+                                        <xs:element name="Perifericos" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Monitor" type="xs:string" minOccurs="0"/>
+                                                    <xs:element name="Teclado" type="xs:string" minOccurs="0"/>
+                                                    <xs:element name="Raton" type="xs:string" minOccurs="0"/>
+                                                    <xs:element name="Auriculares" type="xs:string" minOccurs="0"/>
+                                                    <xs:element name="Otros" type="xs:string" minOccurs="0"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="tipoIDEmpleado" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                    
+                    <!-- Restricción de unicidad: IDs de empleados únicos -->
+                    <xs:unique name="unicidadEmpleadoID">
+                        <xs:selector xpath="Empleado"/>
+                        <xs:field xpath="@id"/>
+                    </xs:unique>
+                </xs:element>
+
+                <!-- SECCIÓN: INFRAESTRUCTURA -->
+                <xs:element name="Infraestructura">
+                    <xs:complexType>
+                        <xs:sequence>
+                            
+                            <!-- Armarios Rack -->
+                            <xs:element name="ArmariosRack">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Modelo" type="xs:string"/>
+                                        <xs:element name="Ubicacion" type="xs:string"/>
+                                        <xs:element name="Contenido">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    
+                                                    <!-- Networking -->
+                                                    <xs:element name="Networking">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="Switch">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="Marca" type="xs:string"/>
+                                                                            <xs:element name="Puertos" type="xs:string"/>
+                                                                            <xs:element name="Velocidad" type="xs:string"/>
+                                                                            <xs:element name="Precio" type="tipoPrecio"/>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="id" type="tipoIDDispositivo" use="required"/>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="Router">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="Marca" type="xs:string"/>
+                                                                            <xs:element name="Funciones" type="xs:string"/>
+                                                                            <xs:element name="Precio" type="tipoPrecio"/>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="id" type="tipoIDDispositivo" use="required"/>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="SistemaSAI">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="Marca" type="xs:string"/>
+                                                                            <xs:element name="Precio" type="tipoPrecio"/>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    
+                                                    <!-- Servidores Físicos -->
+                                                    <xs:element name="ServidoresFisicos">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="Servidor" minOccurs="1" maxOccurs="unbounded">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="Rol" type="xs:string"/>
+                                                                            <xs:element name="Componentes">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element name="CPU" type="xs:string"/>
+                                                                                        <xs:element name="RAM" type="tipoHardwareComponente"/>
+                                                                                        <xs:element name="Almacenamiento" type="tipoHardwareComponente"/>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                            <xs:element name="Precio" type="tipoPrecio"/>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="id" type="tipoIDServidor" use="required"/>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                        
+                                                        <!-- Restricción de unicidad: IDs de servidores únicos -->
+                                                        <xs:unique name="unicidadServidorID">
+                                                            <xs:selector xpath="Servidor"/>
+                                                            <xs:field xpath="@id"/>
+                                                        </xs:unique>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="cantidad" type="tipoCantidad" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                            
+                            <!-- Conectividad -->
+                            <xs:element name="Conectividad">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="CableadoInstalacion">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Tipo" type="xs:string"/>
+                                                    <xs:element name="Cantidad" type="tipoCantidad"/>
+                                                    <xs:element name="PrecioTotal" type="tipoPrecio"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="PuntosAcceso">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Modelo" type="xs:string"/>
+                                                    <xs:element name="PrecioUnidad" type="tipoPrecio"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="cantidad" type="tipoCantidad" use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="TelefoníaIP">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Centralita" type="xs:string"/>
+                                                    <xs:element name="TerminalesFisicos">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute name="cantidad" type="tipoCantidad" use="required"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="PrecioTotal" type="tipoPrecio"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+            </xs:sequence>
+            <xs:attribute name="nombre" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

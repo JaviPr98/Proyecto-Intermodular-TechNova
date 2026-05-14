@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    XSD Schema para Catálogo de Servicios - TechNova Solutions S.L.
+    Sistema de Gestión de Servicios Profesionales
+    
+    Autor: Javier Ordóñez Muñoz
+    Módulo: Lenguajes de Marcas y Sistemas de Gestión de Información (0373)
+    Fecha: 2026
+    
+    Este esquema valida:
+    - Estructura jerárquica de categorías y servicios
+    - Tipos de datos específicos (precios, duraciones)
+    - Patrones de identificadores únicos
+    - Restricciones de valores (modalidades, unidades)
+    - Cardinalidades (elementos opcionales/obligatorios)
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- TIPOS SIMPLES CON RESTRICCIONES -->
+    
+    <!-- Patrón para IDs de categorías: CAT-NNN -->
+    <xs:simpleType name="tipoIDCategoria">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="CAT-\d{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Patrón para IDs de servicios: SRV-XXX-NNN -->
+    <xs:simpleType name="tipoIDServicio">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="SRV-[A-Z]{3}-\d{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Enumeración de monedas válidas -->
+    <xs:simpleType name="tipoMoneda">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="USD"/>
+            <xs:enumeration value="GBP"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Enumeración de modalidades de servicio -->
+    <xs:simpleType name="tipoModalidad">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Proyecto"/>
+            <xs:enumeration value="Mensual"/>
+            <xs:enumeration value="Anual"/>
+            <xs:enumeration value="Por Horas"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Enumeración de unidades de duración -->
+    <xs:simpleType name="tipoUnidadDuracion">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="horas"/>
+            <xs:enumeration value="días"/>
+            <xs:enumeration value="semanas"/>
+            <xs:enumeration value="meses"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Precio con restricciones: positivo, máximo 2 decimales -->
+    <xs:simpleType name="tipoValorPrecio">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="999999.99"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Duración: entero positivo -->
+    <xs:simpleType name="tipoValorDuracion">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="9999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Nombre de categoría o servicio: 5-150 caracteres -->
+    <xs:simpleType name="tipoNombre">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="5"/>
+            <xs:maxLength value="150"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Descripción: 10-1000 caracteres -->
+    <xs:simpleType name="tipoDescripcion">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="10"/>
+            <xs:maxLength value="1000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Característica: 5-200 caracteres -->
+    <xs:simpleType name="tipoCaracteristica">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="5"/>
+            <xs:maxLength value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Versión del catálogo: formato N.N -->
+    <xs:simpleType name="tipoVersion">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d+\.\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- TIPOS COMPLEJOS -->
+    
+    <!-- Tipo para precios con moneda -->
+    <xs:complexType name="tipoPrecio">
+        <xs:simpleContent>
+            <xs:extension base="tipoValorPrecio">
+                <xs:attribute name="moneda" type="tipoMoneda" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <!-- Tipo para duración con unidad -->
+    <xs:complexType name="tipoDuracion">
+        <xs:simpleContent>
+            <xs:extension base="tipoValorDuracion">
+                <xs:attribute name="unidad" type="tipoUnidadDuracion" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- ELEMENTO RAÍZ: CatalogoServicios -->
+    
+    <xs:element name="CatalogoServicios">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <!-- Categorías de servicios (mínimo 1) -->
+                <xs:element name="Categoria" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <!-- Descripción de la categoría -->
+                            <xs:element name="Descripcion" type="tipoDescripcion"/>
+                            
+                            <!-- Servicios dentro de la categoría (mínimo 1) -->
+                            <xs:element name="Servicio" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <!-- Nombre del servicio -->
+                                        <xs:element name="Nombre" type="tipoNombre"/>
+                                        
+                                        <!-- Descripción detallada del servicio -->
+                                        <xs:element name="Descripcion" type="tipoDescripcion"/>
+                                        
+                                        <!-- Modalidad de contratación -->
+                                        <xs:element name="Modalidad" type="tipoModalidad"/>
+                                        
+                                        <!-- Duración estimada -->
+                                        <xs:element name="Duracion" type="tipoDuracion"/>
+                                        
+                                        <!-- Precio base -->
+                                        <xs:element name="PrecioBase" type="tipoPrecio"/>
+                                        
+                                        <!-- Características del servicio -->
+                                        <xs:element name="Caracteristicas">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Caracteristica" type="tipoCaracteristica" 
+                                                                minOccurs="3" maxOccurs="10"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    
+                                    <!-- Atributo ID del servicio (obligatorio) -->
+                                    <xs:attribute name="id" type="tipoIDServicio" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        
+                        <!-- Atributos de la categoría -->
+                        <xs:attribute name="id" type="tipoIDCategoria" use="required"/>
+                        <xs:attribute name="nombre" type="tipoNombre" use="required"/>
+                    </xs:complexType>
+                    
+                    <!-- Restricción de unicidad: IDs de servicios únicos dentro de cada categoría -->
+                    <xs:unique name="unicidadServicioID">
+                        <xs:selector xpath="Servicio"/>
+                        <xs:field xpath="@id"/>
+                    </xs:unique>
+                </xs:element>
+                
+            </xs:sequence>
+            
+            <!-- Atributos del catálogo -->
+            <xs:attribute name="empresa" type="xs:string" use="required"/>
+            <xs:attribute name="version" type="tipoVersion" use="required"/>
+        </xs:complexType>
+        
+        <!-- Restricción de unicidad: IDs de categorías únicos -->
+        <xs:unique name="unicidadCategoriaID">
+            <xs:selector xpath="Categoria"/>
+            <xs:field xpath="@id"/>
+        </xs:unique>
+        
+        <!-- Restricción de unicidad global: Todos los IDs de servicios únicos en todo el catálogo -->
+        <xs:unique name="unicidadGlobalServicioID">
+            <xs:selector xpath="Categoria/Servicio"/>
+            <xs:field xpath="@id"/>
+        </xs:unique>
+    </xs:element>
+
+</xs:schema>

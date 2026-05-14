@@ -1,0 +1,75 @@
+
+MEMORIA TÉCNICA Y ESTRUCTURA DE DATOS: TECHNOVA SOLUTIONS S.L.
+
+1. IDENTIDAD CORPORATIVA
+
+* Nombre Comercial: TechNova Solutions S.L.
+* Sector: Consultoría técnica de sistemas e infraestructura crítica.
+* Ubicación: Sede central en Madrid, España.
+* Misión: Proveer resiliencia digital y soluciones IT de alto impacto 
+  bajo el lema corporativo "Tech for Impact".
+
+2. ARQUITECTURA DE LA SOLUCIÓN WEB (PÁGINAS)
+
+El proyecto se ha desplegado en 4 documentos HTML independientes, 
+interconectados mediante un sistema de navegación común:
+
+    1. INDEX (index.html): Centro de aterrizaje con la visión de empresa.
+    2. EQUIPO (equipo.html): Directorio profesional de los 20 especialistas.
+    3. INFRAESTRUCTURA (infraestructura.html): Inventario de activos IT.
+    4. CONTACTO (contacto.html): Captación de leads y soporte técnico.
+
+3. DESGLOSE TÉCNICO POR SECCIONES
+
+    A. SISTEMA DE NAVEGACIÓN GLOBAL (<nav>):
+    - Maquetación: Implementada con Flexbox (display: flex) para la 
+      distribución proporcional del logo y los enlaces.
+    - Estabilidad: Se ha fijado una altura inamovible de 90px (height) y 
+      una posición pegajosa (position: sticky) para evitar el salto 
+      visual (layout shift) entre las diferentes pestañas de la web.
+
+    B. MÓDULO DE PERSONAL (equipo.html):
+    - Estructura: Los empleados se organizan en contenedores Flexbox 
+      utilizando la etiqueta <article> para cada tarjeta (card).
+    - Personal Destacado:
+      * Dirección: Luis Gerente (CEO).
+      * Sistemas: Jaime Sistema, Alex Redes, Roberto Security.
+      * Ingeniería: Lucía Stack, Elena Cloud, Victor Backend.
+    - Diseño CSS: Uso de pseudo-elementos (::after) con gradientes 
+      radiales para generar el patrón decorativo de la cabecera sin 
+      añadir peso de imagen extra al HTML.
+
+    C. INVENTARIO TÉCNICO (infraestructura.html):
+    - Organización: División por capas críticas (Red, Cómputo, Energía).
+    - Activos Principales:
+      * Red: Switch Cisco Catalyst 9300 y Router Juniper SRX300.
+      * Servidores: Host Virtualización SRV-PROD-01 (DDR5 ECC).
+    - Maquetación: Uso de CSS Grid (display: grid) para alinear las 
+      fotografías de los dispositivos con sus tablas de inversión.
+
+    D. INTERFAZ DE CONTACTO (contacto.html):
+    - Etiquetas: Uso estricto de <label> asociado por ID a cada <input>.
+    - Componentes: Select de 4 opciones (Información, Presupuesto, Soporte, 
+      Alianzas) y área de texto para mensajes extensos (<textarea>).
+    - Validaciones: Aplicación de atributos 'required' y tipos de datos 
+      específicos (email, tel) para asegurar la integridad de la entrada.
+
+4. JUSTIFICACIÓN TÉCNICA DE ESTILOS Y EFECTOS (CSS)
+
+Para este proyecto se ha evitado el uso de frameworks, utilizando 
+únicamente CSS3 nativo avanzado:
+
+- Variables (:root): Centralización de la identidad visual mediante 
+  variables para el Rojo TechNova (#e11d48) y Gris Fondo (#f2f2f2).
+- Efecto Terminal: Animación de "máquina de escribir" en el inicio 
+  usando @keyframes y la función steps(), emulando una consola de comandos.
+- Reseteo (*): Aplicación de box-sizing: border-box para garantizar 
+  que el cálculo de anchos y paddings sea consistente en todo el sitio.
+- Feedback Visual: Uso de pseudo-clases :hover para efectos de 
+  elevación en tarjetas y :focus para resaltar los campos activos 
+  del formulario con bordes sólidos de 2px.
+
+5. NOTA DE INTEGRIDAD DE DATOS
+
+Toda la información técnica, nombres de empleados, especificaciones de 
+hardware y valores corporativos de la web han sido extraídos de este documento de datos.

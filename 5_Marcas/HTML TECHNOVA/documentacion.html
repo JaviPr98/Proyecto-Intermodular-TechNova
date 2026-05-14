@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentación | TechNova Solutions</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">TECHNOVA</div>
+        <ul class="enlaces">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="equipo.html">Equipo</a></li>
+            <li><a href="infraestructura.html">Infraestructura</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="documentacion.html">Documentación</a></li>
+        </ul>
+    </nav>
+
+    <section class="docs-hero-simple">
+        <h1>Documentación Técnica XML/XSD</h1>
+        <p>Sistema completo de gestión de información mediante XML y validación con esquemas XSD. Proyecto desarrollado para el módulo de Lenguajes de Marcas y Sistemas de Gestión de Información.</p>
+    </section>
+
+    <main class="docs-content">
+        
+        <section class="docs-section">
+            <h2>Sobre el Proyecto</h2>
+            <p>Este proyecto implementa dos sistemas XML/XSD completos para TechNova Solutions: un sistema de gestión de inventario IT y un catálogo de servicios profesionales. Ambos sistemas incluyen validación exhaustiva mediante esquemas XSD con patrones regex, enumeraciones y restricciones de datos.</p>
+            <ul class="stats-list">
+                <li><strong>5 Archivos XML/XSD</strong></li>
+                <li><strong>1.181 Líneas de código</strong></li>
+                <li><strong>2 Sistemas completos</strong></li>
+            </ul>
+        </section>
+
+        <section class="docs-section">
+            <h2>Sistema de Gestión de Inventario IT</h2>
+            <p>Control completo de equipamiento tecnológico, asignaciones de empleados e infraestructura de red</p>
+            
+            <div class="file-item">
+                <span class="file-badge xml-badge">XML</span>
+                <h3>Gestion.xml</h3>
+                <p>Inventario completo con 8 empleados, equipamiento asignado, 3 servidores y 5 dispositivos de red. Incluye especificaciones técnicas detalladas y precios.</p>
+                <p><strong>Líneas:</strong> 289</p>
+                <p><strong>Elementos:</strong> Empleados, Servidores, Switches</p>
+                <p><strong>Validación:</strong> Contra Gestion.xsd</p>
+                <a href="xml/Gestion.xml" download>Descargar XML</a>
+            </div>
+
+            <div class="file-item">
+                <span class="file-badge xsd-badge">XSD</span>
+                <h3>Gestion.xsd</h3>
+                <p>Esquema de validación con patrones regex para IDs (EMP\d{3}, SRV-[A-Z]+-\d{2}), enumeraciones de 11 departamentos y restricciones de precios.</p>
+                <p><strong>Líneas:</strong> 363</p>
+                <p><strong>Tipos:</strong> 10+ tipos personalizados</p>
+                <p><strong>Validaciones:</strong> Patrones, rangos, unicidad</p>
+                <a href="xml/Gestion.xsd" download>Descargar XSD</a>
+            </div>
+
+            <div class="file-item">
+                <span class="file-badge test-badge">TEST</span>
+                <h3>Gestion_invalido.xml</h3>
+                <p>XML de prueba con 11 errores intencionales para demostrar el funcionamiento del sistema de validación XSD.</p>
+                <p><strong>Líneas:</strong> 133</p>
+                <p><strong>Errores:</strong> 11 tipos diferentes</p>
+                <p><strong>Propósito:</strong> Testing y demostración</p>
+                <a href="xml/Gestion_invalido.xml" download>Descargar</a>
+            </div>
+        </section>
+
+        <section class="docs-section">
+            <h2>Sistema de Catálogo de Servicios</h2>
+            <p>Catálogo completo de servicios profesionales con precios, duraciones y características detalladas</p>
+            
+            <div class="file-item">
+                <span class="file-badge xml-badge">XML</span>
+                <h3>Servicios.xml</h3>
+                <p>Catálogo de 15 servicios organizados en 5 categorías: Infraestructura IT, Cloud, Ciberseguridad, Consultoría y Desarrollo.</p>
+                <p><strong>Líneas:</strong> 289</p>
+                <p><strong>Servicios:</strong> 15 servicios detallados</p>
+                <p><strong>Categorías:</strong> 5 áreas especializadas</p>
+                <a href="xml/Servicios.xml" download>Descargar XML</a>
+            </div>
+
+            <div class="file-item">
+                <span class="file-badge xsd-badge">XSD</span>
+                <h3>Servicios.xsd</h3>
+                <p>Validación con patrones CAT-\d{3} y SRV-[A-Z]{3}-\d{3}, enumeraciones de modalidades (4 tipos) y restricciones de precios y duraciones.</p>
+                <p><strong>Líneas:</strong> 207</p>
+                <p><strong>Enumeraciones:</strong> Modalidades, monedas, unidades</p>
+                <p><strong>Restricciones:</strong> Rangos numéricos, longitudes</p>
+                <a href="xml/Servicios.xsd" download>Descargar XSD</a>
+            </div>
+        </section>
+
+        <section class="docs-section">
+            <h2>Documentación y Guías</h2>
+            
+            <div class="file-item">
+                <h3>README.md</h3>
+                <p>Documentación general del proyecto con estructura, características técnicas y ejemplos de uso.</p>
+                <p><strong>Líneas:</strong> 396</p>
+                <a href="xml/README.md" download>Ver documento</a>
+            </div>
+
+            <div class="file-item">
+                <h3>GUIA_VALIDACION.md</h3>
+                <p>Instrucciones paso a paso para validar XML con VS Code, xmllint y herramientas online.</p>
+                <p><strong>Líneas:</strong> 449</p>
+                <a href="docs/GUIA_VALIDACION.md" download>Ver guía</a>
+            </div>
+
+            <div class="file-item">
+                <h3>ENTREGABLES.md</h3>
+                <p>Checklist completo de requisitos del módulo con verificación de cumplimiento.</p>
+                <p><strong>Líneas:</strong> 349</p>
+                <a href="docs/ENTREGABLES.md" download>Ver checklist</a>
+            </div>
+        </section>
+
+        <section class="docs-section">
+            <h2>Información del Proyecto</h2>
+            <p><strong>Autor:</strong> Javier Ordóñez Muñoz</p>
+            <p><strong>Módulo:</strong> Lenguajes de Marcas y Sistemas de Gestión de Información </p>
+            <p><strong>Curso:</strong> 1º ASIR - Proyecto Intermodular</p>
+            <p><strong>Empresa:</strong> TechNova Solutions S.L.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 TechNova Solutions S.L. | Consultoría Técnica de Alto Impacto |
+        <a href="documentacion.html" style="color: #e63946; text-decoration: underline;">Documentación Técnica</a>
+    </footer>
+</body>
+</html>

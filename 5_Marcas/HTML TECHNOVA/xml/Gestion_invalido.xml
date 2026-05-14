@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    XML INVÁLIDO - Ejemplo para demostrar validación del XSD
+    
+    Este archivo contiene ERRORES INTENCIONALES para demostrar que el esquema
+    Gestion.xsd valida correctamente. Los errores incluyen:
+    
+    1. ID de empleado con formato incorrecto (debe ser EMP + 3 dígitos)
+    2. Departamento no válido (no está en la enumeración)
+    3. Precio negativo (viola restricción minInclusive="0")
+    4. Moneda inválida (debe ser EUR, USD o GBP)
+    5. ID de servidor con formato incorrecto
+    6. Cantidad con valor 0 (debe ser >= 1)
+    
+    Al validar este XML contra Gestion.xsd, DEBE FALLAR mostrando estos errores.
+-->
+<ConsultoriaTecnica 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="Gestion.xsd"
+    nombre="TechNova Solutions S.L.">
+
+    <Usuarios>
+        
+        <!-- ERROR 1: ID incorrecto - debe ser EMP001, no E001 -->
+        <Empleado id="E001">
+            <Nombre>Juan Prueba</Nombre>
+            <!-- ERROR 2: Departamento inválido - "Marketing" no está en la enumeración -->
+            <Departamento>Marketing</Departamento>
+            <Cargo>Marketing Manager</Cargo>
+            <EquipamientoAsignado>
+                <Dispositivo tipo="Laptop">
+                    <Marca>Dell XPS 15</Marca>
+                    <Componentes>
+                        <CPU>Intel i7</CPU>
+                        <RAM unidad="GB">16</RAM>
+                        <Almacenamiento unidad="GB">512</Almacenamiento>
+                    </Componentes>
+                    <!-- ERROR 3: Precio negativo - viola restricción minInclusive="0" -->
+                    <Precio moneda="EUR">-1500.00</Precio>
+                </Dispositivo>
+            </EquipamientoAsignado>
+            <Telefonia>
+                <Terminal>iPhone 14</Terminal>
+                <!-- ERROR 4: Moneda inválida - "MXN" no está en la enumeración (EUR, USD, GBP) -->
+                <Precio moneda="MXN">800.00</Precio>
+            </Telefonia>
+        </Empleado>
+
+        <!-- ERROR 5: Nombre demasiado corto - debe tener mínimo 3 caracteres -->
+        <Empleado id="EMP002">
+            <Nombre>Al</Nombre>
+            <Departamento>Sistemas</Departamento>
+            <Cargo>Técnico</Cargo>
+            <EquipamientoAsignado>
+                <Dispositivo tipo="Desktop">
+                    <Marca>HP</Marca>
+                    <Componentes>
+                        <CPU>Intel i5</CPU>
+                        <RAM unidad="GB">8</RAM>
+                        <Almacenamiento unidad="GB">256</Almacenamiento>
+                    </Componentes>
+                    <!-- ERROR 6: Precio con más de 2 decimales - viola fractionDigits="2" -->
+                    <Precio moneda="EUR">999.999</Precio>
+                </Dispositivo>
+            </EquipamientoAsignado>
+        </Empleado>
+
+    </Usuarios>
+
+    <Infraestructura>
+        <!-- ERROR 7: Cantidad = 0 - debe ser >= 1 según tipoCantidad -->
+        <ArmariosRack cantidad="0">
+            <Modelo>Rack Genérico</Modelo>
+            <Ubicacion>Sala Servidores</Ubicacion>
+            <Contenido>
+                <Networking>
+                    <!-- ERROR 8: ID de switch incorrecto - debe ser XX-TEXTO-NN -->
+                    <Switch id="SWITCH-01">
+                        <Marca>Cisco</Marca>
+                        <Puertos>24 puertos</Puertos>
+                        <Velocidad>1 Gbps</Velocidad>
+                        <Precio moneda="EUR">1200.00</Precio>
+                    </Switch>
+                    
+                    <!-- ERROR 9: ID de router incorrecto -->
+                    <Router id="ROUTER1">
+                        <Marca>Juniper</Marca>
+                        <Funciones>Routing básico</Funciones>
+                        <Precio moneda="EUR">800.00</Precio>
+                    </Router>
+                    
+                    <SistemaSAI>
+                        <Marca>APC</Marca>
+                        <Precio moneda="EUR">1500.00</Precio>
+                    </SistemaSAI>
+                </Networking>
+                
+                <ServidoresFisicos>
+                    <!-- ERROR 10: ID de servidor incorrecto - debe ser SRV-TEXTO-NN -->
+                    <Servidor id="SERVER-1">
+                        <Rol>Servidor Web</Rol>
+                        <Componentes>
+                            <CPU>Intel Xeon</CPU>
+                            <RAM unidad="GB">32</RAM>
+                            <Almacenamiento unidad="TB">2</Almacenamiento>
+                        </Componentes>
+                        <Precio moneda="EUR">5000.00</Precio>
+                    </Servidor>
+                </ServidoresFisicos>
+            </Contenido>
+        </ArmariosRack>
+        
+        <Conectividad>
+            <CableadoInstalacion>
+                <Tipo>Cat 6</Tipo>
+                <!-- ERROR 11: Cantidad excede el máximo (9999) -->
+                <Cantidad>10000</Cantidad>
+                <PrecioTotal moneda="EUR">2000.00</PrecioTotal>
+            </CableadoInstalacion>
+            
+            <PuntosAcceso cantidad="3">
+                <Modelo>Ubiquiti</Modelo>
+                <PrecioUnidad moneda="EUR">150.00</PrecioUnidad>
+            </PuntosAcceso>
+            
+            <TelefoníaIP>
+                <Centralita>Asterisk</Centralita>
+                <TerminalesFisicos cantidad="2">Yealink</TerminalesFisicos>
+                <PrecioTotal moneda="EUR">500.00</PrecioTotal>
+            </TelefoníaIP>
+        </Conectividad>
+    </Infraestructura>
+
+</ConsultoriaTecnica>

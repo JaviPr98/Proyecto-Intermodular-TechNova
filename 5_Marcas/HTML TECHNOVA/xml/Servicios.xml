@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Catálogo de Servicios - TechNova Solutions S.L.
+    
+    Descripción: Este documento XML representa el catálogo completo de servicios
+    profesionales ofrecidos por TechNova Solutions, incluyendo:
+    - Servicios de infraestructura IT
+    - Consultoría y auditoría
+    - Servicios cloud y virtualización
+    - Ciberseguridad
+    - Desarrollo y automatización
+    
+    Autor: Javier Ordóñez Muñoz
+    Módulo: Lenguajes de Marcas y Sistemas de Gestión de Información (0373)
+    Proyecto Intermodular - 1º ASIR
+    Fecha: 2026-04-23
+    
+    Validación: Este XML está validado contra el esquema Servicios.xsd
+-->
+<CatalogoServicios 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="Servicios.xsd"
+    empresa="TechNova Solutions S.L."
+    version="2.0">
+
+    <!-- CATEGORÍA 1: INFRAESTRUCTURA IT -->
+    <Categoria id="CAT-001" nombre="Infraestructura IT">
+        <Descripcion>Diseño, implementación y gestión de infraestructuras tecnológicas empresariales</Descripcion>
+        
+        <Servicio id="SRV-INF-001">
+            <Nombre>Diseño de Infraestructura de Red</Nombre>
+            <Descripcion>Análisis, diseño e implementación de redes corporativas escalables y seguras. Incluye topología, cableado estructurado, equipamiento activo y documentación técnica completa.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">8</Duracion>
+            <PrecioBase moneda="EUR">12500.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Análisis de requisitos y dimensionamiento</Caracteristica>
+                <Caracteristica>Diseño de topología física y lógica</Caracteristica>
+                <Caracteristica>Selección de equipamiento (switches, routers, firewalls)</Caracteristica>
+                <Caracteristica>Plan de direccionamiento IP y VLANs</Caracteristica>
+                <Caracteristica>Documentación técnica As-Built</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+
+        <Servicio id="SRV-INF-002">
+            <Nombre>Implementación de CPD (Centro de Procesamiento de Datos)</Nombre>
+            <Descripcion>Diseño y despliegue de salas de servidores con alta disponibilidad, incluyendo sistemas de climatización, alimentación redundante y monitorización.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">12</Duracion>
+            <PrecioBase moneda="EUR">28000.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Diseño de sala técnica y layout de racks</Caracteristica>
+                <Caracteristica>Sistema de climatización y control ambiental</Caracteristica>
+                <Caracteristica>SAI y sistema de alimentación redundante</Caracteristica>
+                <Caracteristica>Cableado estructurado categoría 6A/7</Caracteristica>
+                <Caracteristica>Sistema de monitorización y alertas</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+
+        <Servicio id="SRV-INF-003">
+            <Nombre>Gestión de Infraestructura IT (Outsourcing)</Nombre>
+            <Descripcion>Servicio gestionado de administración completa de infraestructura IT con SLA del 99.9%. Incluye monitorización 24/7, mantenimiento preventivo y soporte técnico.</Descripcion>
+            <Modalidad>Mensual</Modalidad>
+            <Duracion unidad="meses">12</Duracion>
+            <PrecioBase moneda="EUR">3500.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Monitorización proactiva 24/7/365</Caracteristica>
+                <Caracteristica>Mantenimiento preventivo mensual</Caracteristica>
+                <Caracteristica>Soporte técnico con SLA 4 horas</Caracteristica>
+                <Caracteristica>Gestión de actualizaciones y parches</Caracteristica>
+                <Caracteristica>Informes mensuales de rendimiento</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+    </Categoria>
+
+    <!-- CATEGORÍA 2: CLOUD Y VIRTUALIZACIÓN -->
+    <Categoria id="CAT-002" nombre="Cloud y Virtualización">
+        <Descripcion>Servicios de migración, implementación y gestión de entornos cloud y plataformas de virtualización</Descripcion>
+        
+        <Servicio id="SRV-CLD-001">
+            <Nombre>Migración a Cloud (AWS/Azure/GCP)</Nombre>
+            <Descripcion>Análisis, planificación y ejecución de migración de infraestructura on-premise a plataformas cloud públicas con estrategia lift-and-shift o re-arquitectura.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">10</Duracion>
+            <PrecioBase moneda="EUR">18500.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Assessment de infraestructura actual</Caracteristica>
+                <Caracteristica>Diseño de arquitectura cloud</Caracteristica>
+                <Caracteristica>Plan de migración por fases</Caracteristica>
+                <Caracteristica>Migración de datos y aplicaciones</Caracteristica>
+                <Caracteristica>Optimización de costes cloud</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+
+        <Servicio id="SRV-CLD-002">
+            <Nombre>Implementación de Virtualización (VMware/Proxmox)</Nombre>
+            <Descripcion>Despliegue de plataforma de virtualización empresarial con alta disponibilidad, balanceo de carga y disaster recovery.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">6</Duracion>
+            <PrecioBase moneda="EUR">9800.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Instalación de hipervisores en cluster</Caracteristica>
+                <Caracteristica>Configuración de almacenamiento compartido</Caracteristica>
+                <Caracteristica>Alta disponibilidad y vMotion/Live Migration</Caracteristica>
+                <Caracteristica>Backup y disaster recovery</Caracteristica>
+                <Caracteristica>Formación a equipo técnico</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+
+        <Servicio id="SRV-CLD-003">
+            <Nombre>Arquitectura Multi-Cloud</Nombre>
+            <Descripcion>Diseño e implementación de estrategia multi-cloud con gestión unificada, optimización de costes y alta disponibilidad entre proveedores.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">14</Duracion>
+            <PrecioBase moneda="EUR">24000.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Estrategia multi-cloud y vendor selection</Caracteristica>
+                <Caracteristica>Diseño de arquitectura híbrida</Caracteristica>
+                <Caracteristica>Implementación de conectividad inter-cloud</Caracteristica>
+                <Caracteristica>Gestión unificada con Terraform/Ansible</Caracteristica>
+                <Caracteristica>Monitorización centralizada</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+    </Categoria>
+
+    <!-- CATEGORÍA 3: CIBERSEGURIDAD -->
+    <Categoria id="CAT-003" nombre="Ciberseguridad">
+        <Descripcion>Servicios de auditoría, implementación y gestión de seguridad informática empresarial</Descripcion>
+        
+        <Servicio id="SRV-SEC-001">
+            <Nombre>Auditoría de Seguridad IT</Nombre>
+            <Descripcion>Análisis exhaustivo de la seguridad de infraestructura, aplicaciones y procesos. Incluye pentesting, análisis de vulnerabilidades y plan de remediación.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">4</Duracion>
+            <PrecioBase moneda="EUR">8500.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Análisis de vulnerabilidades (Nessus, OpenVAS)</Caracteristica>
+                <Caracteristica>Pentesting de infraestructura y aplicaciones</Caracteristica>
+                <Caracteristica>Revisión de configuraciones de seguridad</Caracteristica>
+                <Caracteristica>Análisis de cumplimiento normativo</Caracteristica>
+                <Caracteristica>Informe ejecutivo y plan de acción</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+
+        <Servicio id="SRV-SEC-002">
+            <Nombre>Implementación de SOC (Security Operations Center)</Nombre>
+            <Descripcion>Despliegue de centro de operaciones de seguridad con SIEM, correlación de eventos, threat intelligence y respuesta a incidentes.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">16</Duracion>
+            <PrecioBase moneda="EUR">32000.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Implementación de SIEM (Splunk/ELK/QRadar)</Caracteristica>
+                <Caracteristica>Integración de fuentes de logs</Caracteristica>
+                <Caracteristica>Desarrollo de casos de uso y alertas</Caracteristica>
+                <Caracteristica>Threat intelligence y feeds de amenazas</Caracteristica>
+                <Caracteristica>Procedimientos de respuesta a incidentes</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+
+        <Servicio id="SRV-SEC-003">
+            <Nombre>Gestión de Seguridad Gestionada (MSSP)</Nombre>
+            <Descripcion>Servicio gestionado de seguridad con monitorización 24/7, gestión de vulnerabilidades, análisis de amenazas y respuesta a incidentes.</Descripcion>
+            <Modalidad>Mensual</Modalidad>
+            <Duracion unidad="meses">12</Duracion>
+            <PrecioBase moneda="EUR">4500.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Monitorización de seguridad 24/7/365</Caracteristica>
+                <Caracteristica>Gestión de vulnerabilidades y parches</Caracteristica>
+                <Caracteristica>Análisis de amenazas y threat hunting</Caracteristica>
+                <Caracteristica>Respuesta a incidentes de seguridad</Caracteristica>
+                <Caracteristica>Informes mensuales de seguridad</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+    </Categoria>
+
+    <!-- CATEGORÍA 4: CONSULTORÍA Y AUDITORÍA -->
+    <Categoria id="CAT-004" nombre="Consultoría y Auditoría">
+        <Descripcion>Servicios de asesoramiento estratégico, auditoría técnica y optimización de procesos IT</Descripcion>
+        
+        <Servicio id="SRV-CON-001">
+            <Nombre>Consultoría Estratégica IT</Nombre>
+            <Descripcion>Asesoramiento en planificación estratégica de tecnología, alineación con objetivos de negocio, roadmap tecnológico y optimización de inversiones.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">6</Duracion>
+            <PrecioBase moneda="EUR">11000.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Análisis de situación actual (AS-IS)</Caracteristica>
+                <Caracteristica>Definición de objetivos y KPIs</Caracteristica>
+                <Caracteristica>Roadmap tecnológico a 3 años</Caracteristica>
+                <Caracteristica>Análisis coste-beneficio de inversiones</Caracteristica>
+                <Caracteristica>Plan de transformación digital</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+
+        <Servicio id="SRV-CON-002">
+            <Nombre>Auditoría de Infraestructura IT</Nombre>
+            <Descripcion>Revisión técnica completa de infraestructura, identificación de puntos críticos, análisis de rendimiento y recomendaciones de mejora.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">3</Duracion>
+            <PrecioBase moneda="EUR">6500.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Inventario completo de activos IT</Caracteristica>
+                <Caracteristica>Análisis de rendimiento y capacidad</Caracteristica>
+                <Caracteristica>Identificación de puntos únicos de fallo</Caracteristica>
+                <Caracteristica>Revisión de documentación técnica</Caracteristica>
+                <Caracteristica>Informe de recomendaciones priorizadas</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+
+        <Servicio id="SRV-CON-003">
+            <Nombre>Optimización de Costes IT</Nombre>
+            <Descripcion>Análisis detallado de gastos tecnológicos, identificación de oportunidades de ahorro, renegociación de contratos y optimización de licenciamiento.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">4</Duracion>
+            <PrecioBase moneda="EUR">7200.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Análisis de costes actuales por categoría</Caracteristica>
+                <Caracteristica>Benchmarking con mercado</Caracteristica>
+                <Caracteristica>Identificación de oportunidades de ahorro</Caracteristica>
+                <Caracteristica>Optimización de licenciamiento software</Caracteristica>
+                <Caracteristica>Plan de acción con ROI estimado</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+    </Categoria>
+
+    <!-- CATEGORÍA 5: DESARROLLO Y AUTOMATIZACIÓN -->
+    <Categoria id="CAT-005" nombre="Desarrollo y Automatización">
+        <Descripcion>Servicios de desarrollo de software, automatización de procesos y DevOps</Descripcion>
+        
+        <Servicio id="SRV-DEV-001">
+            <Nombre>Implementación de CI/CD</Nombre>
+            <Descripcion>Diseño e implementación de pipelines de integración y despliegue continuo con Jenkins, GitLab CI o Azure DevOps.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">5</Duracion>
+            <PrecioBase moneda="EUR">8900.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Análisis de flujo de desarrollo actual</Caracteristica>
+                <Caracteristica>Diseño de pipelines CI/CD</Caracteristica>
+                <Caracteristica>Implementación de automatización de tests</Caracteristica>
+                <Caracteristica>Configuración de despliegues automáticos</Caracteristica>
+                <Caracteristica>Formación al equipo de desarrollo</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+
+        <Servicio id="SRV-DEV-002">
+            <Nombre>Automatización de Infraestructura (IaC)</Nombre>
+            <Descripcion>Implementación de Infrastructure as Code con Terraform, Ansible o CloudFormation para gestión automatizada y versionada de infraestructura.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">6</Duracion>
+            <PrecioBase moneda="EUR">10500.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Análisis de infraestructura actual</Caracteristica>
+                <Caracteristica>Desarrollo de módulos Terraform/Ansible</Caracteristica>
+                <Caracteristica>Implementación de GitOps workflow</Caracteristica>
+                <Caracteristica>Automatización de aprovisionamiento</Caracteristica>
+                <Caracteristica>Documentación y best practices</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+
+        <Servicio id="SRV-DEV-003">
+            <Nombre>Desarrollo de Aplicaciones Empresariales</Nombre>
+            <Descripcion>Desarrollo de aplicaciones web y móviles a medida con arquitectura moderna, escalable y mantenible.</Descripcion>
+            <Modalidad>Proyecto</Modalidad>
+            <Duracion unidad="semanas">16</Duracion>
+            <PrecioBase moneda="EUR">28000.00</PrecioBase>
+            <Caracteristicas>
+                <Caracteristica>Análisis de requisitos y diseño UX/UI</Caracteristica>
+                <Caracteristica>Desarrollo con tecnologías modernas</Caracteristica>
+                <Caracteristica>Integración con sistemas existentes</Caracteristica>
+                <Caracteristica>Testing automatizado y QA</Caracteristica>
+                <Caracteristica>Despliegue y soporte post-lanzamiento</Caracteristica>
+            </Caracteristicas>
+        </Servicio>
+    </Categoria>
+
+</CatalogoServicios>
