@@ -1,7 +1,7 @@
 # 📄 Módulo 5: Lenguajes de Marcas
 # 📄 Gestión de Información Estructurada y Arquitectura Web | TechNova Solutions S.L.
 
-Este módulo constituye la base documental y el "diccionario de datos" de **TechNova Solutions S.L.** No se trata simplemente de desarrollo web, sino de la creación de una **fuente de verdad única** y validada que asegura que toda la información crítica de la empresa (activos IT, personal y servicios) sea íntegra y consumible por otros sistemas.
+Este módulo constituye la base documental y de datos de **TechNova Solutions S.L.** No se trata simplemente de desarrollo web, sino de la creación de una **fuente** validada que asegura que toda la información crítica de la empresa (activos IT, personal y servicios) sea íntegra y consumible por otros sistemas.
 
 ---
 
@@ -14,7 +14,7 @@ En una consultora tecnológica, la calidad del dato es prioritaria. He diseñado
 ---
 
 ## 🏗️ Implementación Técnica: El Ecosistema XML
-Se han desarrollado un total de **1.148 líneas de código** de alta precisión, divididas en dos grandes bloques de información:
+Se han desarrollado un total de **1.148 líneas de código** de precisión, divididas en dos grandes bloques de información:
 
 ### 1. Gestión de Activos y Capital Humano (`Gestion.xml`)
 Este archivo actúa como el inventario central de la compañía.
