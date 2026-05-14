@@ -58,7 +58,7 @@ El proyecto se divide en 7 fases modulares integradas, reflejando el flujo de tr
 | **[📂 4_BBDD](./4_Bases_de_Datos)** | *Gestión de BBDD* | Modelo E/R, scripts de creación en PostgreSQL, políticas de backups y roles de usuario. |
 | **[📂 5_Marcas](./5_Marcas)** | *Lenguajes de Marcas* | Portal web (HTML/CSS/PHP), archivos de configuración y validación de inventario con XML/XSD. |
 | **[📂 6_Cloud](./6_Cloud)** | *Computación Cloud* | Diseño de arquitectura en AWS, justificación de migración, estimación de costes y despliegue híbrido. |
-| **[📂 7_Empleabilidad](./7_Empleabilidad)** | *Itinerario FOL* | Perfil profesional, investigación del mercado laboral IT y material preparado para entrevistas técnicas. |
+| **[📂 7_Empleabilidad](./7_Empleabilidad)** | *Itinerario Empelabilidad* | Perfil profesional, investigación del mercado laboral IT y material preparado para entrevistas técnicas. |
 
 ---
 
