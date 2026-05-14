@@ -13,7 +13,7 @@ Este repositorio documenta el diseño, despliegue y mantenimiento desde cero de 
 
 **¿Por qué una consultoría TI?** Como futuro Administrador de Sistemas, considero que diseñar la red y los sistemas para una empresa que se dedica a la propia tecnología es el mayor reto posible. Un entorno de consultoría exige alta disponibilidad, seguridad estricta, segmentación de redes para diferentes clientes y un despliegue de servicios robusto. 
 
-Este proyecto nace con un objetivo claro: **demostrar capacidades reales para el mundo laboral**. Más allá del currículo académico estándar, este trabajo de más de 200 páginas unifica todas las disciplinas del primer año de ASIR en un único ecosistema funcional, evidenciando madurez técnica, capacidad de integración y preparación absoluta para afrontar unas prácticas profesionales en un entorno corporativo exigente.
+Este proyecto nace con un objetivo claro: **demostrar capacidades reales para el mundo laboral**. Más allá del currículum académico, este trabajo de más de 200 páginas unifica todas las asignaturas del primer año de ASIR en un único ecosistema funcional, mostrando las capacidades técnicas, capacidad de integración y preparación absoluta para afrontar unas prácticas profesionales en un entorno corporativo exigente.
 
 ---
 
