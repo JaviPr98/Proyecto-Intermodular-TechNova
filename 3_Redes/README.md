@@ -1,56 +1,58 @@
 # 🌐 Módulo 3: Planificación y Administración de Redes
-## 🏗️ Infraestructura de Red y Conectividad | El Core Digital de TechNova Solutions
+## Configuración de Red y Conectividad - Proyecto TechNova
 
-Este módulo representa la columna vertebral de **TechNova Solutions S.L.** Se ha diseñado una arquitectura de red jerárquica y resiliente, optimizada para soportar cargas de trabajo críticas de **IA y Big Data**, garantizando un flujo de datos seguro, redundante y de baja latencia.
-
----
-
-## 🎯 Visión Estratégica
-En un entorno de consultoría tecnológica, la red no es un servicio secundario; es el motor del negocio. Este diseño se basa en tres pilares:
-* **Resiliencia Operativa:** Convergencia rápida mediante protocolos dinámicos para garantizar "zero-downtime".
-* **Defensa en Profundidad:** Microsegmentación de red para aislar activos críticos y proteger la propiedad intelectual.
-* **Agilidad y Escalabilidad:** Infraestructura preparada para el crecimiento orgánico mediante direccionamiento lógico eficiente.
+En este apartado detallo cómo he montado la red de la empresa. He usado una estructura jerárquica para que todo sea rápido, no haya fallos de conexión y los datos vayan seguros entre los servidores y los usuarios.
 
 ---
 
-## 🛠️ Implementación Técnica de Alto Nivel
-
-### 1. Enrutamiento Dinámico y Alta Disponibilidad (OSPFv2)
-Se ha desplegado **OSPFv2 en Área 0** para gestionar la comunicación entre el Core y el Perímetro:
-* **Convergencia Automática:** Selección de rutas óptimas basadas en coste, permitiendo la re-convergencia ante fallos de enlace.
-* **Inyección de Rutas:** Propagación dinámica de la ruta por defecto (`default-information originate`) hacia el núcleo de la red.
-
-### 2. Gestión Centralizada de Direccionamiento (DHCP Relay)
-A diferencia de configuraciones básicas, se ha implementado un **Servidor DHCP Centralizado** (10.10.100.10):
-* **DHCP Relay Agent:** Configurado en el Switch Core mediante `ip helper-address` para permitir la asignación dinámica de IPs a través de múltiples VLANs.
-* **Control de Ámbitos:** Reservas estratégicas para equipos de infraestructura y segmentación de DNS (Interno corporativo vs. Público de Google).
-
-### 3. Seguridad Perimetral y Robustecimiento (Hardening)
-* **NAT Estático y DMZ:** Publicación segura de servicios internos hacia Internet mediante traducción de direcciones en el Router de borde.
-* **ACLs Extendidas:** Filtrado granular de tráfico (L3/L4) para proteger la zona de servidores y aislar totalmente la red de invitados (VLAN 50).
-* **Acceso Administrativo Seguro:** Despliegue de **SSH v2** con cifrado RSA de 2048 bits en las líneas VTY, inhabilitando protocolos inseguros como Telnet.
-
-### 4. Segmentación Lógica (VLANs)
-* **VLAN 10-40 (Corporativas):** Segmentos específicos para Dirección, Sistemas, Desarrollo y Soporte.
-* **VLAN 50 (Invitados):** Aislamiento total del tráfico externo para evitar accesos no autorizados a la LAN privada.
-* **VLAN 100 (CPD):** Zona de alta seguridad para la granja de servidores y servicios críticos.
+## 🎯 Objetivos del diseño
+He configurado la red pensando en tres cosas:
+* **Que no se caiga:** Si falla un cable o un router, la red busca otro camino sola.
+* **Seguridad real:** Cada departamento está en su sitio y nadie entra donde no debe.
+* **Fácil de ampliar:** Si mañana hay más gente o más oficinas, no hay que romper nada para que funcione.
 
 ---
 
-## 🧩 Sinergia Intermodular
-La red actúa como el tejido conector que permite la integración de los demás módulos del proyecto:
-* **Sistemas (M2):** Soporte de transporte para replicación de Active Directory y servicios de backup FTP.
-* **Bases de Datos (M4):** Optimización de latencia para consultas SQL masivas y acceso seguro al motor PostgreSQL.
-* **Hardware (M1):** Implementación física basada en estándares de cableado estructurado y electrónica de red Cisco Catalyst.
+## 🛠️ Configuración Técnica
+
+### 1. Enrutamiento con OSPFv2
+He usado **OSPF en el Área 0** para que el Core y el Router se hablen automáticamente:
+* **Rutas automáticas:** Los equipos eligen siempre el camino más rápido.
+* **Recuperación de fallos:** Si un enlace se corta, la red se reconfigura en segundos.
+* **Ruta por defecto:** El router le "pasa" la salida a Internet al switch automáticamente.
+
+### 2. DHCP Centralizado (Relay)
+No he puesto un DHCP en cada router. He montado un **Servidor DHCP central** (10.10.100.10):
+* **Helper Address:** El Switch Core reenvía las peticiones de los PCs de cada VLAN al servidor.
+* **Orden de IPs:** He reservado las primeras 10 IPs de cada red para que no choquen con servidores o impresoras.
+
+### 3. Seguridad y Hardening
+* **NAT Estático:** He abierto el servidor web a Internet usando la IP pública 80.58.1.1.
+* **ACLs (Listas de Control):** He filtrado el tráfico para que la VLAN de Invitados no pueda tocar nada de la empresa y para proteger los servidores.
+* **SSH v2:** He desactivado Telnet. Ahora solo se puede entrar a configurar los equipos por SSH cifrado con claves de 2048 bits.
+
+### 4. VLANs (Segmentación)
+He dividido la red para que el tráfico no se mezcle:
+* **VLAN 10-40:** Dirección, Sistemas, Desarrollo y Soporte.
+* **VLAN 50:** Invitados (aislada de todo lo demás).
+* **VLAN 100:** Servidores y servicios críticos.
 
 ---
 
-## 📂 Repositorio de Documentación
-| Archivo | Descripción |
+## 🧩 Relación con otros módulos
+La red es la base donde funcionan los demás trabajos del proyecto:
+* **Sistemas (M2):** Por aquí pasan los datos de Active Directory y los backups por FTP.
+* **Bases de Datos (M4):** He configurado la red para que las consultas a PostgreSQL vayan rápido y seguras.
+* **Hardware (M1):** Aquí se aplica todo lo de cableado y los modelos de routers y switches Cisco.
+
+---
+
+## 📂 Archivos del proyecto
+| Archivo | Qué es |
 | :--- | :--- |
-| 📄 **[INTERMODULAR_REDES_Javier_Ordoñez.pdf](./INTERMODULAR_REDES_Javier_Ordoñez.pdf)** | Memoria técnica completa (Plan de direccionamiento, topología y pruebas de estrés). |
-| 📁 **[Topologia_Cisco_Packet_Tracer](./lab)** | Archivos `.pkt` con la simulación funcional de la infraestructura. |
+| 📄 **[INTERMODULAR_REDES_Javier_Ordoñez.pdf](./INTERMODULAR_REDES_Javier_Ordoñez.pdf)** | Memoria completa con la tabla de IPs y las pruebas de ping. |
+| 📁 **[RED CONFIGURADA TechNova Solutions S.L.pkt](./RED%20CONFIGURADA%20TechNova%20Solutions%20S.L.pkt)** | El archivo de Packet Tracer para cargarlo y probarlo. |
 
 ---
 
-> **Nota del Autor:** Esta implementación demuestra que la administración de redes moderna es el arte de gestionar la información en movimiento, priorizando siempre la seguridad, la redundancia y la disponibilidad del dato.
+> **Resumen:** He montado una red funcional, segura y fácil de administrar, lista para un entorno de trabajo real.
