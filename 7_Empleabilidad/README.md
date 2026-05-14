@@ -54,8 +54,4 @@ Este documento es el "cerebro" que ha dirigido la ejecución de los demás módu
 | 📄 [**INTERMODULAR EMPLEABILIDAD JAVIER ORDÓÑEZ MUÑOZ.pdf**](./INTERMODULAR%20EMPLEABILIDAD%20JAVIER%20ORDÓÑEZ%20MUÑOZ.pdf) | Memoria estratégica de 23 páginas que incluye análisis de mercado, benchmarking y plan de carrera. |
 
 ---
-
-> **Conclusión Profesional:** Entiendo el mercado IT no como un espectador, sino como un profesional que ha analizado la demanda actual para cubrir la necesidad de técnicos junior maduros, responsables y altamente especializados.
-
----
 > **Conclusión Profesional:** Entiendo el mercado IT no como un espectador, sino como un profesional que ha analizado sus carencias y ha diseñado su formación para cubrir la demanda de técnicos junior maduros, responsables y altamente especializados.
