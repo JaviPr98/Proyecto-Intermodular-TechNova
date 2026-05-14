@@ -55,8 +55,8 @@ Este módulo es el "Nivel 0" que alimenta al resto del proyecto ASIR:
 ## 📂 Contenido de la Carpeta
 | Archivo | Descripción |
 | :--- | :--- |
-| 📄 **[Memoria_Tecnica_Marcas.pdf](./INTERMODULAR_LENGUAJE_DE_MARCAS.pdf)** | 31 páginas de análisis técnico, modelos relacionales de datos y evidencias de testing negativo. |
-| 📁 **[src](./src)** | (Opcional) Subcarpeta con los archivos fuente: `.xml` (datos), `.xsd` (reglas) y `.html/.css` (presentación). |
+| [INTERMODULAR LENGUAJE DE MARCAS.pdf](INTERMODULAR%20LENGUAJE%20DE%20MARCAS.pdf) | 31 páginas de análisis técnico, modelos relacionales de datos y evidencias de testing negativo. |
+| [HTML TECHNOVA](HTML%20TECHNOVA) | Subcarpeta con los archivos fuente reales: .xml (datos), .xsd (reglas) y .html / .css (presentación). |
 
 ---
 > **Conclusión Profesional:** Dominar la estructura de la información mediante XML/XSD permite a un Administrador de Sistemas garantizar la consistencia de los datos en entornos empresariales complejos, facilitando la automatización y la interoperabilidad entre diferentes plataformas.
