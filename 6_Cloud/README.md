@@ -34,7 +34,7 @@ Despliegue de instancias elásticas para soportar la carga de trabajo de la empr
 
 ---
 
-## 🧩 Sinergia Intermodular (ASIR)
+## 🧩 Integración Intermodular (ASIR)
 * **Redes (M3):** La arquitectura VPC es la evolución cloud del diseño jerárquico realizado previamente en Cisco Packet Tracer.
 * **Sistemas (M2):** Administración avanzada de instancias EC2, replicando la gestión de servicios Windows/Linux del entorno local.
 * **Bases de Datos (M4):** Transposición de modelos relacionales de PostgreSQL a entornos gestionados (RDS) manteniendo la integridad de los datos.
