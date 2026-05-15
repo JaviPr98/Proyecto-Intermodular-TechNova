@@ -1,46 +1,45 @@
 # ☁️ Módulo: Computación en la Nube
-## Migración de Infraestructura a AWS - Proyecto TechNova
+## Proyecto TechNova: Migración Estratégica a AWS (Región eu-west-1)
 
-En este módulo he migrado los servicios de TechNova Solutions a **Amazon Web Services (AWS)**. He pasado de un entorno físico (on-premise) a una arquitectura cloud para que la infraestructura sea más fácil de gestionar, escalar y proteger.
-
----
-
-## 🎯 Objetivos de la migración
-* **Alta Disponibilidad:** Garantizar que los servidores Windows y Linux estén siempre activos y accesibles.
-* **Escalabilidad:** Poder ampliar los recursos (RAM/CPU) en segundos según las necesidades de la empresa.
-* **Eficiencia de Costes:** Controlar el presupuesto mediante el modelo de pago por uso de AWS y el uso de la capa gratuita.
+En este módulo he liderado la migración de los servicios críticos de **TechNova Solutions S.L.** hacia la infraestructura de **Amazon Web Services (AWS)**. El proyecto ha consistido en transformar un entorno físico *on-premise* basado en hardware local en una arquitectura *cloud* profesional, optimizada para la escalabilidad, la seguridad y la eficiencia de costes.
 
 ---
 
-## 🛠️ Configuración Técnica
-
-### 1. Arquitectura de Red (VPC)
-He diseñado una **Virtual Private Cloud (VPC)** en la región `us-east-1` (Virginia) que replica el esquema local:
-* **Segmentación:** He traducido las VLANs de Cisco a subredes públicas y privadas en la nube.
-* **Conectividad:** He configurado el **Internet Gateway** y las tablas de rutas para gestionar el tráfico hacia Internet y la comunicación interna.
-
-### 2. Despliegue de Servidores (EC2)
-He levantado instancias para los servicios críticos que antes tenía en local:
-* **Windows Server 2022:** Migración del controlador de dominio y el Active Directory para la gestión de identidades.
-* **Ubuntu Server 24.04:** Host para el portal web corporativo (Apache) y el motor de base de datos.
-
-### 3. Gestión de Almacenamiento
-* **EBS (Elastic Block Store):** Volúmenes de alto rendimiento para el sistema operativo y la persistencia de datos.
-* **S3 y EFS:** Uso de Amazon S3 para el hosting estático de la cafetería de la empresa y EFS para tener carpetas compartidas entre varios servidores Linux.
-
-### 4. Seguridad en la Nube
-* **Security Groups:** He creado reglas de firewall a nivel de instancia para cerrar todos los puertos menos los necesarios (SSH, RDP, HTTP, SQL).
-* **Network ACLs:** He aplicado una segunda capa de filtrado a nivel de subred para controlar los flujos de tráfico.
+## 🎯 Objetivos de la Migración
+* **Continuidad de Negocio:** Garantizar la alta disponibilidad de los servicios de identidad y web en la región de **Irlanda (eu-west-1)**.
+* **Optimización Financiera (TCO):** Implementar un modelo de gastos operativos (OPEX) aprovechando la **Capa Gratuita** de AWS y volúmenes de bajo coste (gp3).
+* **Seguridad en Profundidad:** Replicar y mejorar el aislamiento de red local mediante capas de seguridad lógica (VPC, NACLs y Security Groups).
 
 ---
 
-## 🧩 Relación con otros módulos
-* **Redes (M3):** La estructura de la VPC es el reflejo en el cloud del diseño jerárquico que hice en Packet Tracer.
-* **Sistemas (M2):** La administración de las instancias EC2 es la misma que en local, pero sobre el hipervisor de AWS.
-* **Bases de Datos (M4):** He migrado el motor PostgreSQL a la nube asegurando que las tablas y consultas funcionen igual que en el servidor físico.
+## 🛠️ Implementación Técnica
+
+### 1. Arquitectura de Red y Conectividad (VPC)
+He diseñado una **Virtual Private Cloud (VPC)** exclusiva para la consultoría en la región de **Irlanda**, asegurando baja latencia y cumplimiento normativo (GDPR):
+* **Segmentación Lógica:** Traducción de las VLANs de Cisco a un esquema de **Subredes Públicas (10.0.1.0/24)** y **Privadas (10.0.2.0/24)**.
+* **Control de Tráfico:** Configuración de **Internet Gateway** y tablas de rutas personalizadas para blindar la zona de servidores internos.
+
+### 2. Capa de Identidad y Computación (EC2)
+Despliegue de instancias elásticas para soportar la carga de trabajo de la empresa:
+* **Windows Server 2022:** Implementación del controlador de dominio y **Active Directory (AD DS)** en subred privada para la gestión centralizada de identidades.
+* **Ubuntu Server 24.04 LTS:** Servidor web de alto rendimiento (Apache) situado en la zona pública para la exposición de servicios externos.
+
+### 3. Gestión de Datos y Almacenamiento
+* **Amazon RDS (PostgreSQL):** Migración del motor de base de datos a un servicio gestionado, delegando el mantenimiento y los backups automáticos a AWS.
+* **Amazon EBS (gp3):** Uso de almacenamiento de estado sólido de última generación para optimizar el rendimiento de IOPS y reducir costes operativos.
+
+### 4. Seguridad Avanzada
+* **Defensa en Capas:** Combinación de **Security Groups** (stateful) a nivel de instancia y **Network ACLs** (stateless) a nivel de subred.
+* **Principio de Menor Privilegio:** Cierre total de puertos, permitiendo exclusivamente el tráfico necesario (HTTP, RDP, SSH, SQL).
 
 ---
 
+## 🧩 Sinergia Intermodular (ASIR)
+* **Redes (M3):** La arquitectura VPC es la evolución cloud del diseño jerárquico realizado previamente en Cisco Packet Tracer.
+* **Sistemas (M2):** Administración avanzada de instancias EC2, replicando la gestión de servicios Windows/Linux del entorno local.
+* **Bases de Datos (M4):** Transposición de modelos relacionales de PostgreSQL a entornos gestionados (RDS) manteniendo la integridad de los datos.
+
+---
 ## 📂 Archivos del proyecto
 | Archivo | Qué es |
 | :--- | :--- |
