@@ -44,7 +44,7 @@ La base de datos recopila la información técnica de los demás módulos del pr
 | 📄 **[INTERMODULAR_BBDD.pdf](./INTERMODULAR_BBDD.pdf)** | Memoria técnica completa (Diccionario de datos, consultas avanzadas SELECT y conclusiones). |
 | 🗄️ **[TechNova.SQL](./TechNova.SQL)** | Script SQL completo con el código DDL (creación de tablas) y DML (inserción de datos de prueba). |
 | 🖼️ **[E_R TechNova.png](./E_R%20TechNova.png)** | Diagrama Entidad-Relación conceptual del sistema. |
-| 🛠️ **[Relational_TechNova.pgerd](./Relational_TechNova.pgerd)** | Archivo de diseño del Modelo Relacional físico para pgAdmin. |
+| 🛠️ **[Relacional_TechNova.pgerd](./Relational_TechNova.pgerd)** | Archivo de diseño del Modelo Relacional físico para pgAdmin. |
 
 ---
 
