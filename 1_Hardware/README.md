@@ -1,68 +1,57 @@
 # 🖥️ Módulo 1: Fundamentos de Hardware
+## Configuración e Inventario de Hardware - Proyecto TechNova
 
-### Arquitectura de Infraestructura Física y Estrategia de Hardware 🏗️
-**Módulo Central del Proyecto TechNova Solutions S.L.**
-
-En este apartado documento los cimientos físicos sobre los que he montado todo el ecosistema tecnológico de la consultora. En este proyecto, no veo el hardware como un simple gasto, sino como la **base física** que permite que todo lo demás funcione. He diseñado una infraestructura pensada para aguantar cargas de trabajo reales (IA, Big Data y Ciberseguridad), priorizando que los sistemas sean estables, redundantes y eficientes.
+En este módulo he diseñado e implementado la arquitectura física y los cimientos de hardware sobre los que se sostiene todo el entorno tecnológico de TechNova Solutions S.L. No planteo el hardware como un simple gasto de equipo, sino como la base física necesaria para soportar con solvencia las cargas de trabajo de la consultora (IA, Big Data y Ciberseguridad), garantizando estabilidad, redundancia y eficiencia energética.
 
 ---
 
-## 🎯 ¿Por qué este diseño de Hardware?
-
-Mi punto de partida para TechNova ha sido claro: **si el hierro falla, el software no sirve de nada**. La elección de cada componente responde a un análisis de lo que necesita una consultoría técnica hoy en día:
-
-* **Evitar cuellos de botella:** He seleccionado CPUs, RAM y almacenamiento (IOPS) con margen suficiente para que el despliegue de redes, bases de datos y sistemas operativos sea fluido.
-* **Inversión Inteligente:** He priorizado componentes de grado industrial, como fuentes con certificación Platinum, memoria ECC y configuraciones RAID 6. El objetivo es que los equipos duren más tiempo y evitar paradas por averías que costarían dinero a la empresa.
-* **Optimización por puesto:** No todos los empleados necesitan lo mismo. He ajustado el hardware según el flujo de trabajo de cada perfil para no gastar de más donde no hace falta.
+## 🎯 Objetivos del diseño
+He planificado la infraestructura basándome en tres criterios técnicos:
+* **Eliminación de cuellos de botella:** He seleccionado componentes (CPU, RAM y IOPS de almacenamiento) dimensionados para que el despliegue de servidores, bases de datos y tráfico de red funcione de manera fluida.
+* **Continuidad de negocio:** He priorizado hardware de grado industrial (fuentes Platinum, memoria ECC y tolerancia a fallos en discos RAID 6) para maximizar el tiempo de actividad y reducir averías físicas.
+* **Optimización por perfil laboral:** He ajustado las especificaciones de los equipos según las necesidades reales de cada departamento, evitando gastos innecesarios en hardware sobredimensionado.
 
 ---
 
-## 🏗️ Implementación Técnica y Segmentación
+## 🏗️ Implementación Física y Segmentación de Equipos
+He coordinado la potencia de los equipos con la estructura lógica de las VLANs de la empresa para asegurar el rendimiento en cada área:
 
-He alineado la potencia física con la estructura lógica de la red (VLANs), asegurando que cada departamento tenga el rendimiento que necesita:
-
-### 1. Zona de Alto Rendimiento (IA y Ciberseguridad - VLAN 30) 🚀
-* **Equipos:** Workstations **HP Z8 G5 Tower**.
-* **Clave técnica:** Procesadores **Intel Xeon** y gráficas **NVIDIA RTX 6000 Ada (48GB VRAM)**.
-* **Justificación:** Son máquinas para cálculo masivo. He incluido **Memoria DDR5 ECC** porque es fundamental para evitar la corrupción de datos en procesos largos de entrenamiento de IA o auditorías de seguridad.
+### 1. Desarrollo, IA y Ciberseguridad (VLAN 30) 🚀
+* **Equipos:** Workstations de sobremesa **HP Z8 G5 Tower**.
+* **Componentes clave:** Procesadores **Intel Xeon** y aceleradoras gráficas **NVIDIA RTX 6000 Ada (48GB VRAM)**.
+* **Justificación:** Son estaciones dedicadas al cálculo masivo. He montado **Memoria DDR5 ECC** (Error Correcting Code) para prevenir la corrupción de datos y congelamientos del sistema durante procesos largos de entrenamiento de modelos de IA o auditorías de seguridad.
 
 ### 2. Administración y Sistemas (VLAN 20) 🛠️
-* **Equipos:** **Lenovo ThinkPad P16 G2** (Mobile Workstations).
-* **Clave técnica:** 64GB de RAM y **puerto RJ45 físico dedicado**.
-* **Justificación:** El equipo de sistemas necesita moverse al CPD pero con potencia de sobra para levantar entornos de prueba en virtualización antes de pasarlos a producción.
+* **Equipos:** Mobile Workstations **Lenovo ThinkPad P16 G2**.
+* **Componentes clave:** 64GB de memoria RAM y **puerto RJ45 físico integrado**.
+* **Justificación:** Permite al equipo de sistemas movilidad hacia el CPD conservando la capacidad de levantar de manera local múltiples máquinas virtuales en entornos de prueba antes de pasarlas a producción.
 
-### 3. Dirección y Operativa (VLAN 10 y 40) 💼
+### 3. Dirección y Operativa Comercial (VLAN 10 y 40) 💼
 * **Equipos:** **Apple MacBook Air M3** y **Surface Laptop 5**.
-* **Justificación:** Aquí busco autonomía y portabilidad extrema para perfiles que gestionan la estrategia y clientes, usando seguridad biométrica por hardware.
+* **Justificación:** Equipos centrados en la portabilidad extrema, alta autonomía de batería para reuniones y seguridad biométrica integrada por hardware para proteger los accesos de gestión.
 
 ---
 
-## 🚀 Almacenamiento, TCO y Mantenimiento
-
-He diseñado la arquitectura bajo el concepto de **modularidad**, pensando en que la empresa pueda crecer:
-
-1. **Estrategia de Discos (Tiers):** En el servidor principal (**SRV-PROD-01**) combino discos **NVMe** para los datos de acceso rápido (Hot Data) y un **RAID 6 de 40TB** para backups. El RAID 6 me permite que fallen hasta dos discos a la vez sin perder ni un bit.
-2. **Cálculo del TCO (Costo Total):** He analizado el coste a largo plazo. Usar fuentes **80 Plus Platinum** reduce el calor y el gasto eléctrico, algo que se nota mucho en la factura de una empresa a 5 años vista.
-3. **Mantenimiento Proactivo:** He definido protocolos de limpieza, monitorización S.M.A.R.T. de los discos y diagnóstico por códigos de pitidos (Beep Codes) para asegurar que el sistema esté levantado el 99.9% del tiempo.
+## 🛠️ Almacenamiento, Eficiencia (TCO) y Mantenimiento
+* **Estrategia de Discos (Storage Tiers):** En el servidor principal (**SRV-PROD-01**) combino un almacenamiento de alto rendimiento en estado sólido **NVMe** para los datos de acceso frecuente (*Hot Data*), junto con un arreglo **RAID 6 de 40TB** para copias de seguridad. El RAID 6 garantiza que puedan fallar hasta dos discos de manera simultánea sin pérdida de información.
+* **Cálculo de TCO y Eficiencia:** He optimizado el Coste Total de Propiedad a 5 años seleccionando fuentes de alimentación con certificación **80 Plus Platinum**, lo que reduce la disipación de calor en el rack y recorta el consumo eléctrico continuo.
+* **Plan de Mantenimiento Preventivo:** He establecido políticas de monitorización **S.M.A.R.T.** para anticipar fallos en los discos, rutinas de limpieza física de la electrónica y una guía de códigos de pitidos de la placa (*Beep Codes*) para el diagnóstico rápido de fallos en el POST.
 
 ---
 
-## 🧩 Integración Intermodular (Sinergia con ASIR)
-
-El hardware es lo que permite que el resto de mis asignaturas de ASIR "cobren vida":
-
-* **Redes (M3):** He elegido cableado **Cat.6a** y electrónica **Cisco Catalyst** para que el protocolo OSPF y las VLANs vuelen a 10Gbps.
-* **Sistemas Operativos (M2):** He dimensionado los núcleos y la RAM para que las máquinas virtuales del controlador de dominio y los clientes no tengan lag.
-* **Bases de Datos (M4):** La configuración de la controladora de discos está pensada para dar los **IOPS** que pide PostgreSQL en consultas pesadas.
-* **Lenguajes de Marcas (M5):** Todo el inventario físico que ves aquí es lo que uso para generar los archivos **XML/XSD** de gestión automatizada.
+## 🔗 Relación con otros módulos
+El hardware seleccionado dimensiona y da soporte directo al resto de asignaturas del proyecto:
+* **Redes (M3):** He implementado cableado estructurado **Cat.6a** e interfaces Gigabit en electrónica **Cisco Catalyst** para soportar el tráfico inter-VLAN y la convergencia de OSPF a alta velocidad.
+* **Sistemas Operativos (M2):** El número de núcleos de CPU y la asignación de memoria RAM están medidos para ejecutar los hipervisores y las máquinas virtuales (Ubuntu/Windows Server) de los servidores principales sin degradación de rendimiento.
+* **Bases de Datos (M4):** La controladora de discos y las tasas de lectura/escritura están dimensionadas para cubrir los **IOPS** que exige el motor PostgreSQL durante consultas e inserciones SQL masivas.
 
 ---
 
-## 📂 Contenido del Módulo
-
-| Archivo | Descripción |
+## 📂 Archivos del proyecto
+| Archivo | Qué es |
 | :--- | :--- |
-| 📄 [**INTERMODULAR HARDWARE.pdf**](./INTERMODULAR%20HARDWARE.pdf) | Memoria técnica de 23 páginas con el análisis de componentes, presupuestos TCO y plan de mantenimiento. |
+| 📄 **[INTERMODULAR HARDWARE.pdf](./INTERMODULAR%20HARDWARE.pdf)** | Memoria técnica completa (Análisis de componentes, presupuestos de TCO y plan de mantenimiento preventivo). |
 
 ---
-> **Conclusión:** Como futuro administrador, tengo claro que una buena infraestructura empieza por saber elegir el hierro. Este módulo demuestra que sé diseñar una base física sólida, rentable y preparada para el mundo laboral.
+
+> **Resumen:** He diseñado una infraestructura física robusta, eficiente y adaptada a las necesidades reales de producción de la consultora, asegurando que el hardware soporte con total estabilidad la capa lógica del software.
