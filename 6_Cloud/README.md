@@ -1,51 +1,55 @@
 # ☁️ Módulo: Computación en la Nube
-## Proyecto TechNova: Migración Estratégica a AWS (Región eu-west-1)
+## Despliegue de Infraestructura en la Nube (AWS) - Proyecto TechNova
 
-En este módulo he liderado la migración de los servicios críticos de **TechNova Solutions S.L.** hacia la infraestructura de **Amazon Web Services (AWS)**. El proyecto ha consistido en transformar un entorno físico *on-premise* basado en hardware local en una arquitectura *cloud* profesional, optimizada para la escalabilidad, la seguridad y la eficiencia de costes.
-
----
-
-## 🎯 Objetivos de la Migración
-* **Continuidad de Negocio:** Garantizar la alta disponibilidad de los servicios de identidad y web en la región de **Irlanda (eu-west-1)**.
-* **Optimización Financiera (TCO):** Implementar un modelo de gastos operativos (OPEX) aprovechando la **Capa Gratuita** de AWS y volúmenes de bajo coste (gp3).
-* **Seguridad en Profundidad:** Replicar y mejorar el aislamiento de red local mediante capas de seguridad lógica (VPC, NACLs y Security Groups).
+En este módulo he migrado los servicios de TechNova Solutions S.L. hacia la infraestructura de Amazon Web Services (AWS). He replicado el entorno local (on-premise) en una arquitectura cloud para mejorar la disponibilidad de los servidores, facilitar la administración de los recursos y reducir los costes de mantenimiento físico.
 
 ---
 
-## 🛠️ Implementación Técnica
-
-### 1. Arquitectura de Red y Conectividad (VPC)
-He diseñado una **Virtual Private Cloud (VPC)** exclusiva para la consultoría en la región de **Irlanda**, asegurando baja latencia y cumplimiento normativo (GDPR):
-* **Segmentación Lógica:** Traducción de las VLANs de Cisco a un esquema de **Subredes Públicas (10.0.1.0/24)** y **Privadas (10.0.2.0/24)**.
-* **Control de Tráfico:** Configuración de **Internet Gateway** y tablas de rutas personalizadas para blindar la zona de servidores internos.
-
-### 2. Capa de Identidad y Computación (EC2)
-Despliegue de instancias elásticas para soportar la carga de trabajo de la empresa:
-* **Windows Server 2022:** Implementación del controlador de dominio y **Active Directory (AD DS)** en subred privada para la gestión centralizada de identidades.
-* **Ubuntu Server 24.04 LTS:** Servidor web de alto rendimiento (Apache) situado en la zona pública para la exposición de servicios externos.
-
-### 3. Gestión de Datos y Almacenamiento
-* **Amazon RDS (PostgreSQL):** Migración del motor de base de datos a un servicio gestionado, delegando el mantenimiento y los backups automáticos a AWS.
-* **Amazon EBS (gp3):** Uso de almacenamiento de estado sólido de última generación para optimizar el rendimiento de IOPS y reducir costes operativos.
-
-### 4. Seguridad Avanzada
-* **Defensa en Capas:** Combinación de **Security Groups** (stateful) a nivel de instancia y **Network ACLs** (stateless) a nivel de subred.
-* **Principio de Menor Privilegio:** Cierre total de puertos, permitiendo exclusivamente el tráfico necesario (HTTP, RDP, SSH, SQL).
+## 🎯 Objetivos del diseño
+He configurado el entorno en la nube basándome en tres puntos:
+* **Alta disponibilidad:** Despliegue de instancias en la región de Norte de Virginia (`us-east-1`) garantizando que los servicios web e identidades estén siempre operativos.
+* **Control del gasto (TCO):** Uso de volúmenes de almacenamiento optimizados (`gp3`) y aprovechamiento de la capa gratuita de AWS para mantener un modelo de costes eficiente.
+* **Seguridad lógica:** Implementación de un aislamiento de red estricto mediante firewalls virtuales redundantes para proteger los servidores internos.
 
 ---
 
-## 🧩 Integración Intermodular (ASIR)
-* **Redes (M3):** La arquitectura VPC es la evolución cloud del diseño jerárquico realizado previamente en Cisco Packet Tracer.
-* **Sistemas (M2):** Administración avanzada de instancias EC2, replicando la gestión de servicios Windows/Linux del entorno local.
-* **Bases de Datos (M4):** Transposición de modelos relacionales de PostgreSQL a entornos gestionados (RDS) manteniendo la integridad de los datos.
+## 🛠️ Configuración Técnica
+
+### 1. Arquitectura de Red (VPC)
+He creado una **Virtual Private Cloud (VPC)** desde cero para estructurar la red lógica de la empresa:
+* **Subredes:** He dividido el direccionamiento en subredes públicas (`10.0.1.0/24`) para los servicios expuestos y subredes privadas (`10.0.2.0/24`) para proteger los servidores críticos.
+* **Enrutamiento:** He configurado el **Internet Gateway** para dar salida a la red pública y tablas de rutas personalizadas para denegar accesos externos directos a la zona privada.
+
+### 2. Instancias de Computación (EC2)
+He levantado los servidores necesarios para soportar los servicios corporativos:
+* **Windows Server 2022:** Configurado en la subred privada como el controlador de dominio principal con **Active Directory (AD DS)** para la gestión centralizada de cuentas de usuario de la organización.
+* **Ubuntu Server 24.04 LTS:** Servidor web con Apache situado en la subred pública para alojar de manera segura el portal de la consultora.
+
+### 3. Gestión de Almacenamiento y Servicios de Datos
+* **Amazon S3:** Despliegue de un bucket configurado para el hosting de un sitio web estático, aplicando reglas de ciclo de vida (Lifecycle Rules) para optimizar el almacenamiento y replicación entre regiones (CRR).
+* **Amazon EFS (Elastic File System):** Sistema de archivos compartido en red montado directamente sobre las instancias Linux de la subred privada para el intercambio de datos centralizado.
+* **Amazon EBS (gp3):** Volúmenes de estado sólido asignados a las instancias para balancear el coste mensual con un rendimiento alto de operaciones de lectura/escritura (IOPS).
+
+### 4. Seguridad de la Infraestructura
+* **Security Groups:** Actúan como firewall a nivel de instancia (*stateful*). He cerrado todos los puertos de entrada permitiendo únicamente el tráfico imprescindible (HTTP, RDP, SSH, SQL).
+* **Network ACLs (NACLs):** Filtro de seguridad a nivel de subred (*stateless*) que añade una segunda capa perimetral para blindar la comunicación entre zonas públicas y privadas.
 
 ---
+
+## 🔗 Relación con otros módulos
+Este entorno en la nube unifica las configuraciones que he realizado en el resto de asignaturas:
+* **Redes (M3):** La topología de la VPC y el uso de subredes públicas/privadas representa la trasposición al cloud del diseño jerárquico de VLANs que monté en Cisco Packet Tracer.
+* **Sistemas Operativos (M2):** La administración y securización de las instancias EC2 (tanto Ubuntu como Windows Server) es idéntica a la gestión realizada en los entornos virtualizados locales.
+* **Bases de Datos (M4):** La infraestructura cloud está dimensionada para alojar el motor relacional PostgreSQL, garantizando la integridad de las tablas y latencias mínimas de conexión.
+
+---
+
 ## 📂 Archivos del proyecto
 | Archivo | Qué es |
 | :--- | :--- |
-| 📄 **[INTERMODULAR_CLOUD_Javier_Ordoñez.pdf](./INTERMODULAR_CLOUD_Javier_Ordoñez.pdf)** | Memoria técnica con el diseño VPC, EC2 y presupuesto de costes. |
-
+| 📄 **[INTERMODULAR_CLOUD_Javier_Ordoñez.pdf](./INTERMODULAR_CLOUD_Javier_Ordoñez.pdf)** | Memoria técnica completa (Estrategia de migración, diseño VPC, configuración de instancias y costes). |
+| 🖼️ **[VPC_TechNova.drawio.png](./VPC_TechNova.drawio.png)** | Diagrama de arquitectura de red cloud detallando las subredes, tablas de rutas y componentes de AWS. |
 
 ---
 
-> **Resumen:** He convertido la infraestructura física de TechNova en una solución cloud profesional, segura y preparada para crecer sin depender de hardware propio.
+> **Resumen:** He migrado la infraestructura física de TechNova a una arquitectura cloud funcional en AWS, aplicando políticas estrictas de seguridad perimetral y almacenamiento centralizado.
